@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useEffect } from "react"
+import { CSSProperties, FC, useEffect, useRef } from "react"
 import { MoonIcon, SunIcon } from "../components/icons"
 import { useAppContext } from "../hooks/useApp"
 
@@ -8,13 +8,13 @@ interface IconProps {
 }
 
 const ThemeSwitcher: FC<IconProps> = props => {
-  let useDark
+  let useDark = useRef<MediaQueryList | null>(null)
   const { theme, setTheme } = useAppContext()
 
   useEffect(() => {
-    useDark = window.matchMedia("(prefers-color-scheme: dark)")
-    document.documentElement.classList.toggle("dark", useDark.matches)
-    useDark.addEventListener("change", e => {
+    useDark.current = window.matchMedia("(prefers-color-scheme: dark)")
+    document.documentElement.classList.toggle("dark", useDark.current.matches)
+    useDark.current.addEventListener("change", e => {
       setTheme(theme === "light" ? "dark" : "light")
       document.documentElement.classList.toggle("dark", e.matches)
     })

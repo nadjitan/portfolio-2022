@@ -353,6 +353,7 @@ const Shapez = () => {
             title="Github"
             href="https://github.com/Kapatid/shapez-game"
             target="_blank"
+            rel="noreferrer"
           >
             <GithubIcon />
           </a>

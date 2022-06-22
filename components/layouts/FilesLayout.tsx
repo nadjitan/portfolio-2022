@@ -205,6 +205,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               href="https://github.com/nadjitan"
               className="mr-[25px] inline-flex"
               target="_blank"
+              rel="noreferrer" 
             >
               <GithubIcon
                 title="Github profile"

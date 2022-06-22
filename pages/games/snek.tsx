@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { GithubIcon } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
 
@@ -51,8 +51,8 @@ const controls = (snek: Snek) => {
 const settings = { speed: 200, border: true }
 
 const Snek = () => {
-  let gameEnd = false
-  let snek: Snek = { body: [{ x: 0, y: 0 }], move: "right" }
+  let gameEnd = useRef(false)
+  let snek = useRef<Snek>({ body: [{ x: 0, y: 0 }], move: "right" })
 
   useEffect(() => {
     // UI
@@ -90,7 +90,7 @@ const Snek = () => {
       // Prevent apple at 0 and at snake's body
       if (
         index === 0 ||
-        snek.body.some(coord => coord.x === x && coord.y === y)
+        snek.current.body.some(coord => coord.x === x && coord.y === y)
       ) {
         index = randomApplePos()
       }
@@ -98,39 +98,39 @@ const Snek = () => {
     }
 
     const game = () => {
-      controls(snek)
+      controls(snek.current)
       // START
-      let head = snek.body[snek.body.length - 1]
+      let head = snek.current.body[snek.current.body.length - 1]
       grid.children.item(randomApplePos())!.classList.add("food")
 
       // UPDATE
       const gameUpdate = setInterval(() => {
-        if (gameEnd) clearInterval(gameUpdate)
+        if (gameEnd.current) clearInterval(gameUpdate)
         // Remove tail
         grid.children
-          .item(oneDIndex(snek.body.shift()!))!
+          .item(oneDIndex(snek.current.body.shift()!))!
           .classList.remove("active")
 
         // Updating head
-        if (snek.move === "down") {
+        if (snek.current.move === "down") {
           head = { x: head.x, y: head.y === rows - 1 ? 0 : head.y + 1 }
-        } else if (snek.move === "up") {
+        } else if (snek.current.move === "up") {
           head = { x: head.x, y: head.y === 0 ? rows - 1 : head.y - 1 }
-        } else if (snek.move === "right") {
+        } else if (snek.current.move === "right") {
           head = { x: head.x === cols - 1 ? 0 : head.x + 1, y: head.y }
-        } else if (snek.move === "left") {
+        } else if (snek.current.move === "left") {
           head = { x: head.x === 0 ? cols - 1 : head.x - 1, y: head.y }
         }
 
         // Always push new coordinates to body
-        snek.body.push(head)
+        snek.current.body.push(head)
 
         // Updating head element
         let headClass = grid.children.item(oneDIndex(head))!.classList
         if (headClass.contains("active")) {
           // End game
-          gameEnd = true
-          snek = { body: [{ x: 0, y: 0 }], move: "right" }
+          gameEnd.current = true
+          snek.current = { body: [{ x: 0, y: 0 }], move: "right" }
           startBtn.style.display = "none"
           restartBtn.style.display = "grid"
           modal.querySelector("p")!.style.display = "none"
@@ -141,8 +141,8 @@ const Snek = () => {
           headClass.remove("food")
           headClass.add("active")
           // Push new coordinate/body
-          snek.body.push(head)
-          scoreDiv.textContent = `Score: ${snek.body.length - 1}`
+          snek.current.body.push(head)
+          scoreDiv.textContent = `Score: ${snek.current.body.length - 1}`
           // New food position
           grid.children.item(randomApplePos())!.classList.add("food")
         } else {
@@ -162,7 +162,7 @@ const Snek = () => {
         box.classList.remove("active")
       })
       modal.style.display = "none"
-      gameEnd = false
+      gameEnd.current = false
 
       game()
     })
@@ -193,6 +193,7 @@ const Snek = () => {
             title="Github"
             href="https://github.com/Kapatid/snek-game"
             target="_blank"
+            rel="noreferrer"
           >
             <GithubIcon />
           </a>
