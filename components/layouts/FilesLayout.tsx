@@ -2,10 +2,12 @@ import type { NextPage } from "next"
 import Head from "next/head"
 import {
   DownArrowIcon,
+  ExitIcon,
   FileIcon,
   FolderIcon,
   FolderOpenIcon,
   GithubIcon,
+  MenuIcon,
   RightArrowIcon,
 } from "../icons"
 import ThemeSwitcher from "../ThemeSwitcher"
@@ -67,6 +69,8 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   paths.pop()
   paths.splice(0, paths.length, ...paths.filter(element => element !== ""))
 
+  const [menu, setMenu] = useState(false)
+
   const [expand, setExpand] = useState(
     router.pathname.split("/")
       ? [...paths, "portfolio 2022"]
@@ -100,16 +104,16 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           }}
         >
           {expand.find(f => f === files.name.toLowerCase()) ? (
-            <DownArrowIcon />
+            <DownArrowIcon svgClass="fill-theme-on-background scale-50" />
           ) : (
-            <RightArrowIcon />
+            <RightArrowIcon svgClass="fill-theme-on-background scale-50" />
           )}
           {files.type === "folder" && (
             <>
               {expand.find(f => f === files.name.toLowerCase()) ? (
-                <FolderOpenIcon />
+                <FolderOpenIcon svgClass="fill-theme-on-background" />
               ) : (
-                <FolderIcon />
+                <FolderIcon svgClass="fill-theme-on-background" />
               )}
               &nbsp;
             </>
@@ -146,7 +150,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             }
             onClick={() => setClicked(files.name.toLowerCase())}
           >
-            <FileIcon />
+            <FileIcon svgClass="fill-theme-on-background" />
             &nbsp;
             {files.name}.{files.type}
           </a>
@@ -205,25 +209,49 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               href="https://github.com/nadjitan"
               className="mr-[25px] inline-flex"
               target="_blank"
-              rel="noreferrer" 
+              rel="noreferrer"
             >
               <GithubIcon
                 title="Github profile"
-                style={{ transform: "scale(1.5)" }}
+                svgClass="fill-theme-on-background scale-150"
               />
             </a>
             <ThemeSwitcher
+              spanClass="sm:mr-0 mr-[25px] cursor-pointer"
+              svgClass="fill-theme-on-background scale-150"
               title="Theme toggle"
-              style={{ transform: "scale(1.5)" }}
+            />
+            <MenuIcon
+              spanClass="sm:hidden cursor-pointer"
+              svgClass="fill-theme-on-background scale-150"
+              title="Menu toggle"
+              onClick={() => setMenu(!menu)}
             />
           </div>
         </div>
-        <div className="w-full h-full grid grid-rows-1 grid-cols-1 sm:grid-cols-[0.8fr,700px] place-items-center border-t-2 border-t-theme-on-background overflow-hidden">
-          <div className="w-full h-full sm:block hidden pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree">
+        <div className="relative w-full h-full grid grid-rows-1 grid-cols-1 sm:grid-cols-[0.8fr,700px] place-items-center border-t-2 border-t-theme-on-background overflow-hidden">
+          <div
+            className={`${
+              menu ? "left-[0]" : "left-[-208px]"
+            } transition-[left] z-50 bg-theme-background w-52 h-full sm:hidden shadow-2xl absolute flex flex-col justify-between pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree`}
+          >
+            <RecursiveComponent files={tree} />
+            <button
+              onClick={() => setMenu(false)}
+              className="w-full rounded-none flex items-center justify-center"
+            >
+              CLOSE
+              <ExitIcon svgClass="scale-75 fill-theme-background" />
+            </button>
+          </div>
+          <div className="z-50 bg-theme-background w-52 h-full sm:block hidden shadow-2xl pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree">
             <RecursiveComponent files={tree} />
           </div>
 
-          <div className="w-full h-full p-4 relative box-border overflow-auto">
+          <div
+            onClick={() => setMenu(false)}
+            className="w-full h-full p-4 relative box-border overflow-auto"
+          >
             {children}
           </div>
         </div>

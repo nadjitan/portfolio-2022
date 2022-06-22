@@ -8,8 +8,6 @@ import { AppProvider } from "../hooks/useApp"
 import FilesLayout from "../components/layouts/FilesLayout"
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const Layout = Component.Layout || FilesLayout
-
   return (
     <AppProvider>
       <FilesLayout>

@@ -1,28 +1,17 @@
 import { CSSProperties, FC } from "react"
 
 interface IconProps {
-  style?: CSSProperties
-  stroke?: CSSProperties["stroke"]
-  fill?: CSSProperties["fill"]
   title?: string
-  scale?: 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1
+  spanClass?: string
+  svgClass?: string
   onClick?: () => void
-}
-
-const svgDefaults: CSSProperties = {
-  cursor: "pointer",
-}
-
-const spanDefaults: CSSProperties = {
-  display: "inline-flex",
 }
 
 // SVGs from https://iconer.app
 export const RightArrowIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults, transform: "scale(0.5)" }}
-      className="icon-right-arrow stroke-theme-on-background fill-theme-on-background"
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -33,10 +22,9 @@ export const RightArrowIcon: FC<IconProps> = props => (
   </span>
 )
 export const DownArrowIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults, transform: "scale(0.5)" }}
-      className="icon-down-arrow stroke-theme-on-background fill-theme-on-background"
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -47,10 +35,9 @@ export const DownArrowIcon: FC<IconProps> = props => (
   </span>
 )
 export const FileIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
-      className="icon-file fill-theme-on-background"
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -61,10 +48,9 @@ export const FileIcon: FC<IconProps> = props => (
   </span>
 )
 export const FolderIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
-      className="icon-folder fill-theme-on-background"
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -75,10 +61,9 @@ export const FolderIcon: FC<IconProps> = props => (
   </span>
 )
 export const FolderOpenIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
-      className="icon-folder fill-theme-on-background"
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -89,10 +74,9 @@ export const FolderOpenIcon: FC<IconProps> = props => (
   </span>
 )
 export const GithubIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
-      className="fill-theme-on-background"
+      className={props.svgClass}
       enableBackground="new 0 0 32 32"
       width="46"
       height="46"
@@ -110,10 +94,9 @@ export const GithubIcon: FC<IconProps> = props => (
   </span>
 )
 export const SunIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
-      className="fill-theme-on-background"
+      className={props.svgClass}
       width="46"
       height="46"
       xmlns="http://www.w3.org/2000/svg"
@@ -129,17 +112,43 @@ export const SunIcon: FC<IconProps> = props => (
   </span>
 )
 export const MoonIcon: FC<IconProps> = props => (
-  <span title={props.title} style={spanDefaults} onClick={props.onClick}>
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
-      style={{ ...props.style, ...svgDefaults }}
+      className={props.svgClass}
       xmlns="http://www.w3.org/2000/svg"
-      className="fill-theme-on-background"
       width="46"
       height="46"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
       <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    </svg>
+  </span>
+)
+export const ExitIcon: FC<IconProps> = props => (
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
+    <svg
+      className={props.svgClass}
+      width="24"
+      height="24"
+      xmlns="http://www.w3.org/2000/svg"
+      fillRule="evenodd"
+      clipRule="evenodd"
+    >
+      <path d="M11 21h8v-2l1-1v4h-9v2l-10-3v-18l10-3v2h9v5l-1-1v-3h-8v18zm10.053-9l-3.293-3.293.707-.707 4.5 4.5-4.5 4.5-.707-.707 3.293-3.293h-9.053v-1h9.053z" />
+    </svg>
+  </span>
+)
+export const MenuIcon: FC<IconProps> = props => (
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
+    <svg
+      className={props.svgClass}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M4 22h-4v-4h4v4zm0-12h-4v4h4v-4zm0-8h-4v4h4v-4zm3 0v4h17v-4h-17zm0 12h17v-4h-17v4zm0 8h17v-4h-17v4z" />
     </svg>
   </span>
 )

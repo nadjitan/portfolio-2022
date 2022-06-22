@@ -3,8 +3,9 @@ import { MoonIcon, SunIcon } from "../components/icons"
 import { useAppContext } from "../hooks/useApp"
 
 interface IconProps {
-  style?: CSSProperties
   title?: string
+  spanClass?: string
+  svgClass?: string
 }
 
 const ThemeSwitcher: FC<IconProps> = props => {
@@ -22,8 +23,9 @@ const ThemeSwitcher: FC<IconProps> = props => {
 
   return theme === "light" ? (
     <SunIcon
+      spanClass={props.spanClass}
+      svgClass={props.svgClass}
       title={props.title}
-      style={props.style}
       onClick={() => {
         setTheme("dark")
         document.documentElement.classList.toggle("dark")
@@ -31,8 +33,9 @@ const ThemeSwitcher: FC<IconProps> = props => {
     />
   ) : (
     <MoonIcon
+      spanClass={props.spanClass}
+      svgClass={props.svgClass}
       title={props.title}
-      style={props.style}
       onClick={() => {
         setTheme("light")
         document.documentElement.classList.toggle("dark")

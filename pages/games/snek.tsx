@@ -195,7 +195,7 @@ const Snek = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <GithubIcon />
+            <GithubIcon svgClass="fill-theme-on-background" />
           </a>
         </div>
       </div>

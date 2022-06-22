@@ -347,7 +347,7 @@ const Shapez = () => {
       </div>
       <div>
         <div id="grid-shapez"></div>
-        <div className="w-full flex justify-between mt-[10px">
+        <div className="w-full flex justify-between mt-[10px]">
           <h4 id="score">Score: 0</h4>
           <a
             title="Github"
@@ -355,7 +355,7 @@ const Shapez = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <GithubIcon />
+            <GithubIcon svgClass="fill-theme-on-background" />
           </a>
         </div>
       </div>

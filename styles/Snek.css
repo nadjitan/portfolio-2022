@@ -34,7 +34,7 @@
 }
 
 #modal-snek {
-  @apply z-50 absolute bg-theme-background p-10 rounded-md shadow-2xl border-2 border-theme-on-background;
+  @apply z-20 absolute bg-theme-background p-10 rounded-md shadow-2xl border-2 border-theme-on-background;
 }
 #modal-snek > button {
   @apply mt-4;
