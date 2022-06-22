@@ -1,4 +1,4 @@
-import FilesLayout from "../../components/layouts/FilesLayout"
+import FilesLayout from "../components/layouts/FilesLayout"
 
 const About = () => {
   return <>About</>

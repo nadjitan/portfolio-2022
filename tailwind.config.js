@@ -32,8 +32,7 @@ module.exports = {
         workSans: ["WorkSans", "sans-serif"],
       },
       screens: {
-        wide: "1700px",
-        xs: "460px",
+        wide: "1600px",
       },
     },
   },

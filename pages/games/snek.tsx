@@ -1,4 +1,3 @@
-import { NextPage } from "next"
 import { useEffect } from "react"
 import { GithubIcon } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"

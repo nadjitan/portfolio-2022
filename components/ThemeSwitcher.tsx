@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useLayoutEffect } from "react"
+import { CSSProperties, FC, useEffect } from "react"
 import { MoonIcon, SunIcon } from "../components/icons"
 import { useAppContext } from "../hooks/useApp"
 
@@ -11,7 +11,7 @@ const ThemeSwitcher: FC<IconProps> = props => {
   let useDark
   const { theme, setTheme } = useAppContext()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     useDark = window.matchMedia("(prefers-color-scheme: dark)")
     document.documentElement.classList.toggle("dark", useDark.matches)
     useDark.addEventListener("change", e => {
