@@ -1,0 +1,43 @@
+#grid-shapez,
+.box,
+#modal,
+#file-shapez {
+  @apply grid place-items-center;
+}
+
+#file-shapez {
+  @apply h-full w-full;
+}
+
+#grid-shapez {
+  --box-size: 1.2rem;
+  --cols: 10;
+  --rows: 24;
+
+  grid:
+    repeat(var(--rows), var(--box-size)) /
+    repeat(var(--cols), var(--box-size));
+  gap: 0.4rem;
+}
+
+.box-shapez {
+  @apply border-[1px] rounded border-theme-on-background h-full w-full;
+}
+
+.active,
+.static {
+  @apply bg-theme-on-background;
+}
+
+#modal {
+  @apply z-50 absolute bg-theme-background p-10 rounded-md shadow-2xl border-2 border-theme-on-background;
+}
+#modal > button {
+  @apply mt-2;
+}
+#modal > p {
+  margin-top: 0.5rem;
+}
+#modal :is(p, h1) {
+  @apply text-theme-on-background;
+}

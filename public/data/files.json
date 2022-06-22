@@ -1,0 +1,32 @@
+{
+  "type": "root",
+  "name": "PORTFOLIO 2022",
+  "children": [
+    {
+      "type": "folder",
+      "name": "Games",
+      "children": [
+        {
+          "type": "js",
+          "name": "Snek"
+        },
+        {
+          "type": "js",
+          "name": "Shapez"
+        }
+      ]
+    },
+    {
+      "type": "md",
+      "name": "about"
+    },
+    {
+      "type": "md",
+      "name": "skills"
+    },
+    {
+      "type": "md",
+      "name": "README"
+    }
+  ]
+}

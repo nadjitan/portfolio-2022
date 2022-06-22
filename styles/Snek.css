@@ -1,0 +1,47 @@
+#grid-snek,
+.box,
+#modal-snek,
+#file-snek {
+  @apply grid place-items-center;
+}
+
+#file-snek {
+  @apply h-full w-full;
+}
+
+#grid-snek {
+  --box-size: 3rem;
+  --box-count: 8;
+
+  position: relative;
+  grid:
+    repeat(var(--box-count), var(--box-size)) /
+    repeat(var(--box-count), var(--box-size));
+  gap: 0.4rem;
+}
+
+.box {
+  @apply border-2 rounded border-theme-on-background h-full w-full;
+}
+
+.active {
+  @apply bg-theme-on-background;
+}
+
+.food {
+  border-color: brown;
+  background-color: brown;
+}
+
+#modal-snek {
+  @apply z-50 absolute bg-theme-background p-10 rounded-md shadow-2xl border-2 border-theme-on-background;
+}
+#modal-snek > button {
+  @apply mt-4;
+}
+#modal-snek > p {
+  @apply mt-2;
+}
+#modal-snek :is(p, h1) {
+  @apply text-theme-on-background;
+}
