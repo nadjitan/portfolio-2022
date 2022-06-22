@@ -18,7 +18,7 @@ const ThemeSwitcher: FC<IconProps> = props => {
       setTheme(theme === "light" ? "dark" : "light")
       document.documentElement.classList.toggle("dark", e.matches)
     })
-  }, [theme, setTheme])
+  }, [])
 
   return theme === "light" ? (
     <SunIcon
