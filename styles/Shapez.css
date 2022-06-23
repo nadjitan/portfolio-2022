@@ -10,14 +10,27 @@
 }
 
 #grid-shapez {
-  --box-size: 1.2rem;
+  --box-size: 1.05rem;
   --cols: 10;
   --rows: 24;
 
   grid:
     repeat(var(--rows), var(--box-size)) /
     repeat(var(--cols), var(--box-size));
-  gap: 0.4rem;
+  gap: 0.25rem;
+}
+
+@media (min-width: 1600px) {
+  #grid-shapez {
+    --box-size: 1.2rem;
+    --cols: 10;
+    --rows: 24;
+
+    grid:
+      repeat(var(--rows), var(--box-size)) /
+      repeat(var(--cols), var(--box-size));
+    gap: 0.4rem;
+  }
 }
 
 .box-shapez {

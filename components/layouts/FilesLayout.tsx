@@ -191,7 +191,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       <Head>
         <title>Home</title>
       </Head>
-      <main className="flex flex-col items-center sm:w-[950px] sm:h-[600px] wide:h-[800px] w-full h-full ">
+      <main className="flex flex-col items-center sm:w-[950px] sm:h-[660px] wide:h-[800px] w-full h-full ">
         <div className="w-full flex justify-between py-3 px-3 sm:px-0">
           <Link href="/">
             <h1
@@ -229,10 +229,10 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             />
           </div>
         </div>
-        <div className="relative w-full h-full grid grid-rows-1 grid-cols-1 sm:grid-cols-[0.8fr,700px] place-items-center border-t-2 border-t-theme-on-background overflow-hidden">
+        <div className="relative w-full h-full grid grid-rows-1 grid-cols-1 sm:grid-cols-[200px,1fr] border-t-2 border-t-theme-on-background overflow-hidden">
           <div
             className={`${
-              menu ? "left-[0]" : "left-[-208px]"
+              menu ? "left-0" : "left-[-208px]"
             } transition-[left] z-50 bg-theme-background w-52 h-full sm:hidden shadow-2xl absolute flex flex-col justify-between pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree`}
           >
             <RecursiveComponent files={tree} />
@@ -244,13 +244,13 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               <ExitIcon svgClass="scale-75 fill-theme-background" />
             </button>
           </div>
-          <div className="z-50 bg-theme-background w-52 h-full sm:block hidden shadow-2xl pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree">
+          <div className="z-50 bg-theme-background w-full h-full sm:block hidden shadow-2xl pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree">
             <RecursiveComponent files={tree} />
           </div>
 
           <div
             onClick={() => setMenu(false)}
-            className="w-full h-full p-4 relative box-border overflow-auto"
+            className="w-full h-full relative overflow-auto"
           >
             {children}
           </div>

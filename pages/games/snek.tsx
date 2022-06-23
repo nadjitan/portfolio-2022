@@ -1,5 +1,12 @@
+import Head from "next/head"
 import { useEffect, useRef } from "react"
-import { GithubIcon } from "../../components/icons"
+import {
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  CaretUpIcon,
+  GithubIcon,
+} from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
 
 interface Vector2D {
@@ -169,37 +176,70 @@ const Snek = () => {
   }, [])
 
   return (
-    <div id="file-snek">
-      <div id="modal-snek">
-        <h1>Snek 🐍</h1>
-        <p>
-          Movement: <kbd>W</kbd>
-          <kbd>A</kbd>
-          <kbd>S</kbd>
-          <kbd>D</kbd>
-        </p>
-        <button className="modal-btn" value="start">
-          Start
-        </button>
-        <button className="modal-btn hidden" value="restart">
-          Restart
-        </button>
-      </div>
-      <div>
-        <div id="grid-snek"></div>
-        <div className="w-full flex justify-between mt-[10px]">
-          <h4 id="score">Score: 0</h4>
-          <a
-            title="Github"
-            href="https://github.com/Kapatid/snek-game"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <GithubIcon svgClass="fill-theme-on-background" />
-          </a>
+    <>
+      <Head>
+        <title>Snek 🐍</title>
+      </Head>
+      <div id="file-snek">
+        <div id="modal-snek">
+          <h1>Snek 🐍</h1>
+          <p className="hidden sm:inline-block">
+            Movement: <kbd>W</kbd>
+            <kbd>A</kbd>
+            <kbd>S</kbd>
+            <kbd>D</kbd>
+          </p>
+          <button className="modal-btn" value="start">
+            Start
+          </button>
+          <button className="modal-btn hidden" value="restart">
+            Restart
+          </button>
+        </div>
+        <div>
+          <div id="grid-snek"></div>
+          <div className="w-full flex justify-between mt-[10px]">
+            <h4 id="score">Score: 0</h4>
+            <a
+              title="Github"
+              href="https://github.com/Kapatid/snek-game"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubIcon svgClass="fill-theme-on-background" />
+            </a>
+          </div>
+          <div className="w-full grid sm:hidden place-items-center mt-10">
+            <div className="grid  grid-cols-3 grid-rows-3">
+              <button className="col-start-2 rounded-xl">
+                <CaretUpIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+              <button className="row-start-2 col-start-3 rounded-xl">
+                <CaretRightIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+              <button className="row-start-3 col-start-2 col-span-1 rounded-xl">
+                <CaretDownIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+              <button className="row-start-2 col-start-1 rounded-xl">
+                <CaretLeftIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

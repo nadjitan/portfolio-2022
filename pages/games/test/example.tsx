@@ -1,5 +1,14 @@
+import Head from "next/head"
+
 const Example = () => {
-  return <div>Test</div>
+  return (
+    <>
+      <Head>
+        <title>Example</title>
+      </Head>
+      <div className="w-full h-full box-border p-4">example</div>
+    </>
+  )
 }
 
 export default Example

@@ -1,5 +1,11 @@
-import { useLayoutEffect } from "react"
-import { GithubIcon } from "../../components/icons"
+import Head from "next/head"
+import { useEffect } from "react"
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  GithubIcon,
+  RotateIcon,
+} from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
 
 const tetrominoes = {
@@ -78,7 +84,7 @@ const rotateBox = (degree: number, { x, y }: Vector2D, origin: Vector2D) => {
 }
 
 const Shapez = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     let settings = { fallSpeed: 1000, border: true }
 
     // UI
@@ -326,40 +332,64 @@ const Shapez = () => {
   }, [])
 
   return (
-    <div id="file-shapez">
-      <div id="modal">
-        <h1>Shapez 🧱</h1>
-        <p>
-          Movement: <kbd>W</kbd>
-          <kbd>A</kbd>
-          <kbd>S</kbd>
-          <kbd>D</kbd>
-        </p>
-        <p>
-          Rotate: <kbd>R</kbd>
-        </p>
-        <button className="modal-btn" value="start">
-          Start
-        </button>
-        <button className="modal-btn hidden" value="restart">
-          Restart
-        </button>
-      </div>
-      <div>
-        <div id="grid-shapez"></div>
-        <div className="w-full flex justify-between mt-[10px]">
-          <h4 id="score">Score: 0</h4>
-          <a
-            title="Github"
-            href="https://github.com/Kapatid/shapez-game"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <GithubIcon svgClass="fill-theme-on-background" />
-          </a>
+    <>
+      <Head>
+        <title>Shapez 🧱</title>
+      </Head>
+      <div id="file-shapez">
+        <div id="modal">
+          <h1>Shapez 🧱</h1>
+          <p className="hidden sm:inline-block">
+            Movement: <kbd>W</kbd>
+            <kbd>A</kbd>
+            <kbd>S</kbd>
+            <kbd>D</kbd>
+          </p>
+          <p className="hidden sm:inline-block">
+            Rotate: <kbd>R</kbd>
+          </p>
+          <button className="modal-btn" value="start">
+            Start
+          </button>
+          <button className="modal-btn hidden" value="restart">
+            Restart
+          </button>
+        </div>
+        <div>
+          <div id="grid-shapez"></div>
+          <div className=" flex w-full justify-between mt-2">
+            <h4 id="score">Score: 0</h4>
+            <a
+              title="Github"
+              href="https://github.com/Kapatid/shapez-game"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubIcon svgClass="fill-theme-on-background" />
+            </a>
+          </div>
+          <div className="w-full flex sm:hidden justify-between  mt-10">
+            <div>
+              <button className="rounded-xl">
+                <CaretLeftIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+              <button className="rounded-xl">
+                <CaretRightIcon
+                  svgClass="fill-theme-background"
+                  spanClass="scale-150"
+                />
+              </button>
+            </div>
+            <button className="rounded-xl">
+              <RotateIcon svgClass="stroke-theme-background " />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
