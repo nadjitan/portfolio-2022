@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import {
+  CogIcon,
   DownArrowIcon,
   ExitIcon,
   FileIcon,
@@ -11,9 +12,9 @@ import {
   RightArrowIcon,
 } from "../icons"
 import ThemeSwitcher from "../ThemeSwitcher"
-import { FC, useState } from "react"
+import { FC, useState, useEffect } from "react"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import Router, { useRouter } from "next/router"
 
 const tree = {
   type: "root",
@@ -63,20 +64,33 @@ const addOrRemove = <T,>(arr: T[], item: T) =>
   arr.includes(item) ? arr.filter(i => i !== item) : [...arr, item]
 
 const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
+  // Router events
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    Router.events.on("routeChangeStart", () => setLoading(true))
+    Router.events.on("routeChangeComplete", () => setLoading(false))
+    Router.events.on("routeChangeError", () => setLoading(false))
+    return () => {
+      Router.events.off("routeChangeStart", () => setLoading(true))
+      Router.events.off("routeChangeComplete", () => setLoading(false))
+      Router.events.off("routeChangeError", () => setLoading(false))
+    }
+  }, [Router.events])
   const router = useRouter()
+
+  // "File system" events
   const [clicked, setClicked] = useState(router.pathname.split("/").pop() ?? "")
   const paths = router.pathname.split("/")
   paths.pop()
   paths.splice(0, paths.length, ...paths.filter(element => element !== ""))
-
   const [menu, setMenu] = useState(false)
-
   const [expand, setExpand] = useState(
     router.pathname.split("/")
       ? [...paths, "portfolio 2022"]
       : ["portfolio 2022"]
   )
 
+  // Component for each "folder" and "file"
   const RecursiveComponent: FC<{ files: typeof tree }> = ({ files }) => {
     let parentObjs: Tree[] = []
     let found = false
@@ -101,8 +115,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           onClick={() => {
             setExpand(addOrRemove(expand, files.name.toLowerCase()))
             setClicked(files.name.toLowerCase())
-          }}
-        >
+          }}>
           {expand.find(f => f === files.name.toLowerCase()) ? (
             <DownArrowIcon svgClass="fill-theme-on-background scale-50" />
           ) : (
@@ -148,8 +161,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
                 ? "btn-file active-btn"
                 : "btn-file"
             }
-            onClick={() => setClicked(files.name.toLowerCase())}
-          >
+            onClick={() => setClicked(files.name.toLowerCase())}>
             <FileIcon svgClass="fill-theme-on-background" />
             &nbsp;
             {files.name}.{files.type}
@@ -191,16 +203,15 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       <Head>
         <title>Home</title>
       </Head>
-      <main className="flex flex-col items-center sm:w-[950px] sm:h-[660px] wide:h-[800px] w-full h-full ">
-        <div className="w-full flex justify-between py-3 px-3 sm:px-0">
+      <main className="flex h-full w-full flex-col items-center sm:h-[660px] sm:w-[950px] wide:h-[800px] ">
+        <div className="flex w-full justify-between py-3 px-3 sm:px-0">
           <Link href="/">
             <h1
               className="cursor-pointer"
               onClick={() => {
                 setClicked("")
                 setExpand(["portfolio 2022"])
-              }}
-            >
+              }}>
               nadjitan
             </h1>
           </Link>
@@ -209,8 +220,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               href="https://github.com/nadjitan"
               className="mr-[25px] inline-flex"
               target="_blank"
-              rel="noreferrer"
-            >
+              rel="noreferrer">
               <GithubIcon
                 title="Github profile"
                 svgClass="fill-theme-on-background scale-150"
@@ -229,33 +239,53 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             />
           </div>
         </div>
-        <div className="relative w-full h-full grid grid-rows-1 grid-cols-1 sm:grid-cols-[200px,1fr] border-t-2 border-t-theme-on-background overflow-hidden">
+        <div className="relative grid h-full w-full grid-cols-1 grid-rows-1 overflow-hidden border-t-2 border-t-theme-on-background sm:grid-cols-[200px,1fr]">
           <div
             className={`${
               menu ? "left-0" : "left-[-208px]"
-            } transition-[left] z-50 bg-theme-background w-52 h-full sm:hidden shadow-2xl absolute flex flex-col justify-between pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree`}
-          >
+            } files-tree absolute z-50 box-border flex h-full w-52 flex-col justify-between border-r-2 border-theme-on-background bg-theme-background pt-2 font-rubik text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
+            
+            <div
+              className={`${
+                loading ? "opacity-100" : "opacity-0"
+              } absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity`}>
+              <CogIcon
+                svgClass="fill-theme-on-background scale-[2]"
+                spanClass="mr-5 animate-spin"
+              />
+              <h3 className="inline-flex justify-center font-bold">
+                Loading...
+              </h3>
+            </div>
+
             <button
               onClick={() => setMenu(false)}
-              className="w-full rounded-none flex items-center justify-center"
-            >
+              className="flex w-full items-center justify-center rounded-none">
               CLOSE
               <ExitIcon svgClass="scale-75 fill-theme-background" />
             </button>
           </div>
-          <div className="z-50 bg-theme-background w-full h-full sm:block hidden shadow-2xl pt-2 box-border text-base font-rubik border-r-2 border-theme-on-background files-tree">
+          <div className="files-tree z-50 box-border hidden h-full w-full border-r-2 border-theme-on-background bg-theme-background pt-2 font-rubik text-base sm:block">
             <RecursiveComponent files={tree} />
           </div>
-
           <div
             onClick={() => setMenu(false)}
-            className="w-full h-full relative overflow-auto"
-          >
+            className="relative h-full w-full overflow-auto">
             {children}
           </div>
         </div>
       </main>
+      <div
+        className={`${
+          loading ? "opacity-100" : "opacity-0"
+        } absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
+        <CogIcon
+          svgClass="fill-theme-on-background scale-[2]"
+          spanClass="mr-5 animate-spin"
+        />
+        <h3 className="inline-flex justify-center font-bold">Loading...</h3>
+      </div>
     </>
   )
 }
