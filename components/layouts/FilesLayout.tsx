@@ -65,14 +65,27 @@ const addOrRemove = <T,>(arr: T[], item: T) =>
 
 const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   // Router events
+  const [loadComplete, setLoadComplete] = useState(true)
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    Router.events.on("routeChangeStart", () => setLoading(true))
-    Router.events.on("routeChangeComplete", () => setLoading(false))
+    Router.events.on("routeChangeStart", () => {
+      setLoadComplete(false)
+      setTimeout(() => !loadComplete && setLoading(true), 500)
+    })
+    Router.events.on("routeChangeComplete", () => {
+      setLoading(false)
+      setLoadComplete(true)
+    })
     Router.events.on("routeChangeError", () => setLoading(false))
     return () => {
-      Router.events.off("routeChangeStart", () => setLoading(true))
-      Router.events.off("routeChangeComplete", () => setLoading(false))
+      Router.events.off("routeChangeStart", () => {
+        setLoadComplete(false)
+        setTimeout(() => !loadComplete && setLoading(true), 500)
+      })
+      Router.events.off("routeChangeComplete", () => {
+        setLoading(false)
+        setLoadComplete(true)
+      })
       Router.events.off("routeChangeError", () => setLoading(false))
     }
   }, [Router.events])
@@ -104,36 +117,6 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
         }
         if (found) parentObjs.push(tree)
       }
-    }
-
-    const SummaryElem: FC = () => {
-      return (
-        <summary
-          className={`btn-folder ${
-            clicked === files.name.toLowerCase() && "active-btn"
-          }`}
-          onClick={() => {
-            setExpand(addOrRemove(expand, files.name.toLowerCase()))
-            setClicked(files.name.toLowerCase())
-          }}>
-          {expand.find(f => f === files.name.toLowerCase()) ? (
-            <DownArrowIcon svgClass="fill-theme-on-background scale-50" />
-          ) : (
-            <RightArrowIcon svgClass="fill-theme-on-background scale-50" />
-          )}
-          {files.type === "folder" && (
-            <>
-              {expand.find(f => f === files.name.toLowerCase()) ? (
-                <FolderOpenIcon svgClass="fill-theme-on-background" />
-              ) : (
-                <FolderIcon svgClass="fill-theme-on-background" />
-              )}
-              &nbsp;
-            </>
-          )}
-          {files.name}
-        </summary>
-      )
     }
 
     const LinkElem: FC = () => {
@@ -181,7 +164,31 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       }
       return (
         <details className="container-folder" open={expandDetails}>
-          <SummaryElem />
+          <summary
+            className={`btn-folder ${
+              clicked === files.name.toLowerCase() && "active-btn"
+            }`}
+            onClick={() => {
+              setExpand(addOrRemove(expand, files.name.toLowerCase()))
+              setClicked(files.name.toLowerCase())
+            }}>
+            {expand.find(f => f === files.name.toLowerCase()) ? (
+              <DownArrowIcon svgClass="fill-theme-on-background scale-50" />
+            ) : (
+              <RightArrowIcon svgClass="fill-theme-on-background scale-50" />
+            )}
+            {files.type === "folder" && (
+              <>
+                {expand.find(f => f === files.name.toLowerCase()) ? (
+                  <FolderOpenIcon svgClass="fill-theme-on-background" />
+                ) : (
+                  <FolderIcon svgClass="fill-theme-on-background" />
+                )}
+                &nbsp;
+              </>
+            )}
+            {files.name}
+          </summary>
 
           {files.children &&
             files.children.map((item, index) => (
@@ -245,7 +252,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               menu ? "left-0" : "left-[-208px]"
             } files-tree absolute z-50 box-border flex h-full w-52 flex-col justify-between border-r-2 border-theme-on-background bg-theme-background pt-2 font-rubik text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
-            
+
             <div
               className={`${
                 loading ? "opacity-100" : "opacity-0"
@@ -273,19 +280,22 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             onClick={() => setMenu(false)}
             className="relative h-full w-full overflow-auto">
             {children}
+
+            <div
+              className={`${
+                loading ? "opacity-100" : "opacity-0"
+              } absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
+              <CogIcon
+                svgClass="fill-theme-on-background scale-[2]"
+                spanClass="mr-5 animate-spin"
+              />
+              <h3 className="inline-flex justify-center font-bold">
+                Loading...
+              </h3>
+            </div>
           </div>
         </div>
       </main>
-      <div
-        className={`${
-          loading ? "opacity-100" : "opacity-0"
-        } absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
-        <CogIcon
-          svgClass="fill-theme-on-background scale-[2]"
-          spanClass="mr-5 animate-spin"
-        />
-        <h3 className="inline-flex justify-center font-bold">Loading...</h3>
-      </div>
     </>
   )
 }
