@@ -8,6 +8,32 @@ interface IconProps {
 }
 
 // SVGs from https://iconer.app
+export const QuoteLeftIcon: FC<IconProps> = props => (
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
+    <svg
+      className={props.svgClass}
+      width="46"
+      height="46"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.691 6.292C5.094 4.771 7.217 4 10.001 4h1v2.819l-.805.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789ZM20.001 20h-6a1 1 0 0 1-1-1v-5l.002-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21.001 4h1v2.819l-.805.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2Z"></path>
+    </svg>
+  </span>
+)
+export const QuoteRightIcon: FC<IconProps> = props => (
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
+    <svg
+      className={props.svgClass}
+      width="46"
+      height="46"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.31 17.708C22.195 15.66 22.005 13.03 22 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.891 2.891 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.31-2.292Zm-11.008 0C11.19 15.66 11 13.03 10.993 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.89 2.89 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.31-2.292Z"></path>
+    </svg>
+  </span>
+)
 export const RightArrowIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg

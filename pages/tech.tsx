@@ -5,9 +5,9 @@ const Skills = () => {
   return (
     <>
       <Head>
-        <title>Skills</title>
+        <title>Tech</title>
       </Head>
-      <div className="w-full h-full box-border p-4">Skills</div>
+      <div className="w-full h-full box-border p-4">Tech</div>
     </>
   )
 }

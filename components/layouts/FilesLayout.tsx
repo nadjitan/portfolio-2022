@@ -24,38 +24,13 @@ const tree = {
       type: "folder",
       name: "Games",
       children: [
-        {
-          type: "js",
-          name: "Snek",
-        },
-        {
-          type: "js",
-          name: "Shapez",
-        },
-        {
-          type: "folder",
-          name: "Test",
-          children: [
-            {
-              type: "js",
-              name: "Example",
-            },
-          ],
-        },
+        { type: "js", name: "Snek" },
+        { type: "js", name: "Shapez" },
       ],
     },
-    {
-      type: "md",
-      name: "about",
-    },
-    {
-      type: "md",
-      name: "skills",
-    },
-    {
-      type: "md",
-      name: "README",
-    },
+    { type: "md", name: "about" },
+    { type: "md", name: "projects" },
+    { type: "md", name: "tech" },
   ],
 }
 type Tree = typeof tree
@@ -139,11 +114,9 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       return (
         <Link href={url}>
           <a
-            className={
-              clicked === files.name.toLowerCase()
-                ? "btn-file active-btn"
-                : "btn-file"
-            }
+            className={`btn-file font-cascadia-code ${
+              clicked === files.name.toLowerCase() && "active-btn"
+            }`}
             onClick={() => setClicked(files.name.toLowerCase())}>
             <FileIcon svgClass="fill-theme-on-background" />
             &nbsp;
@@ -165,7 +138,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       return (
         <details className="container-folder" open={expandDetails}>
           <summary
-            className={`btn-folder ${
+            className={`btn-folder font-cascadia-code ${
               clicked === files.name.toLowerCase() && "active-btn"
             }`}
             onClick={() => {
@@ -210,18 +183,20 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       <Head>
         <title>Home</title>
       </Head>
-      <main className="flex h-full w-full flex-col items-center sm:h-[660px] sm:w-[950px] wide:h-[800px] ">
-        <div className="flex w-full justify-between py-3 px-3 sm:px-0">
+
+      <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px] wide:h-[820px] ">
+        <nav className="flex w-full justify-between py-3 px-3 sm:px-0">
           <Link href="/">
-            <h1
-              className="cursor-pointer"
+            <h2
+              className="cursor-pointer font-semibold"
               onClick={() => {
                 setClicked("")
                 setExpand(["portfolio 2022"])
               }}>
               nadjitan
-            </h1>
+            </h2>
           </Link>
+
           <div className="flex">
             <a
               href="https://github.com/nadjitan"
@@ -230,14 +205,16 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               rel="noreferrer">
               <GithubIcon
                 title="Github profile"
-                svgClass="fill-theme-on-background scale-150"
+                svgClass="fill-theme-on-background scale-150 w-6 h-6"
               />
             </a>
+
             <ThemeSwitcher
               spanClass="sm:mr-0 mr-[25px] cursor-pointer"
-              svgClass="fill-theme-on-background scale-150"
+              svgClass="fill-theme-on-background scale-150 w-6 h-6"
               title="Theme toggle"
             />
+
             <MenuIcon
               spanClass="sm:hidden cursor-pointer"
               svgClass="fill-theme-on-background scale-150"
@@ -245,26 +222,27 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               onClick={() => setMenu(!menu)}
             />
           </div>
-        </div>
+        </nav>
+
         <div className="relative grid h-full w-full grid-cols-1 grid-rows-1 overflow-hidden border-t-2 border-t-theme-on-background sm:grid-cols-[200px,1fr]">
           <div
             className={`${
               menu ? "left-0" : "left-[-208px]"
-            } files-tree absolute z-50 box-border flex h-full w-52 flex-col justify-between border-r-2 border-theme-on-background bg-theme-background pt-2 font-rubik text-base transition-[left] sm:hidden`}>
+            } files-tree font-rubik absolute z-50 box-border flex h-full w-52 flex-col justify-between border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
 
-            <div
-              className={`${
-                loading ? "opacity-100" : "opacity-0"
-              } absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity`}>
-              <CogIcon
-                svgClass="fill-theme-on-background scale-[2]"
-                spanClass="mr-5 animate-spin"
-              />
-              <h3 className="inline-flex justify-center font-bold">
-                Loading...
-              </h3>
-            </div>
+            {loading && (
+              <div
+                className={`absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity`}>
+                <CogIcon
+                  svgClass="fill-theme-on-background scale-[2] h-6 w-6"
+                  spanClass="mr-5 animate-spin"
+                />
+                <h3 className="inline-flex justify-center font-bold">
+                  Loading...
+                </h3>
+              </div>
+            )}
 
             <button
               onClick={() => setMenu(false)}
@@ -273,26 +251,28 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               <ExitIcon svgClass="scale-75 fill-theme-background" />
             </button>
           </div>
-          <div className="files-tree z-50 box-border hidden h-full w-full border-r-2 border-theme-on-background bg-theme-background pt-2 font-rubik text-base sm:block">
+
+          <div className="files-tree font-rubik z-50 box-border hidden h-full w-full border-r-2 border-theme-on-background bg-theme-background pt-2 text-base sm:block">
             <RecursiveComponent files={tree} />
           </div>
+
           <div
             onClick={() => setMenu(false)}
             className="relative h-full w-full overflow-auto">
             {children}
 
-            <div
-              className={`${
-                loading ? "opacity-100" : "opacity-0"
-              } absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
-              <CogIcon
-                svgClass="fill-theme-on-background scale-[2]"
-                spanClass="mr-5 animate-spin"
-              />
-              <h3 className="inline-flex justify-center font-bold">
-                Loading...
-              </h3>
-            </div>
+            {loading && (
+              <div
+                className={`absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
+                <CogIcon
+                  svgClass="fill-theme-on-background scale-[2] h-6 w-6"
+                  spanClass="mr-5 animate-spin"
+                />
+                <h3 className="inline-flex justify-center font-bold">
+                  Loading...
+                </h3>
+              </div>
+            )}
           </div>
         </div>
       </main>

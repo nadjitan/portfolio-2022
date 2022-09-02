@@ -4,7 +4,7 @@
 
 .icon-right-arrow,
 .icon-down-arrow {
-  @apply w-5 h-5 mr-1;
+  @apply mr-1 h-5 w-5;
 }
 
 /**
@@ -17,13 +17,13 @@
 }
 .btn-folder,
 .btn-file {
-  @apply w-max py-1 px-2 relative box-border
-  border-2 border-transparent
-  flex items-center
-  rounded-md
-  cursor-pointer
-  select-none
-  list-none;
+  @apply relative box-border flex w-max cursor-pointer
+  select-none list-none
+  items-center rounded-md
+  border-2
+  border-transparent
+  py-1
+  px-2;
 }
 .btn-folder::-webkit-details-marker {
   @apply hidden;

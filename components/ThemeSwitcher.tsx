@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useEffect, useRef } from "react"
+import { FC, useEffect, useRef } from "react"
 import { MoonIcon, SunIcon } from "../components/icons"
 import { useAppContext } from "../hooks/useApp"
 
@@ -9,10 +9,16 @@ interface IconProps {
 }
 
 const ThemeSwitcher: FC<IconProps> = props => {
-  let useDark = useRef<MediaQueryList | null>(null)
   const { theme, setTheme } = useAppContext()
+  let useDark = useRef<MediaQueryList | null>(null)
 
   useEffect(() => {
+    setTheme(
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+    )
+    // Change theme based on user's system
     useDark.current = window.matchMedia("(prefers-color-scheme: dark)")
     document.documentElement.classList.toggle("dark", useDark.current.matches)
     useDark.current.addEventListener("change", e => {
@@ -22,7 +28,7 @@ const ThemeSwitcher: FC<IconProps> = props => {
   }, [])
 
   return theme === "light" ? (
-    <SunIcon
+    <MoonIcon
       spanClass={props.spanClass}
       svgClass={props.svgClass}
       title={props.title}
@@ -32,7 +38,7 @@ const ThemeSwitcher: FC<IconProps> = props => {
       }}
     />
   ) : (
-    <MoonIcon
+    <SunIcon
       spanClass={props.spanClass}
       svgClass={props.svgClass}
       title={props.title}

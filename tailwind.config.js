@@ -21,14 +21,10 @@ module.exports = {
         "theme-shadow": "var(--shadow)",
       },
       fontFamily: {
-        poppins: ["Poppins Regular", "sans-serif"],
-        anaheim: ["Anaheim", "sans-serif"],
-        "pridi-extraLight": ["Pridi ExtraLight", "serif"],
+        "space-mono-regular": ["Space Mono Regular", "sans-serif"],
+        "space-mono-bold": ["Space Mono Bold", "sans-serif"],
         "cascadia-code": ["Cascadia Code", "sans-serif"],
-        "josefinSans-italic": ["JosefinSans Italic", "sans-serif"],
-        "josefinSans-boldItalic": ["JosefinSans BoldItalic", "sans-serif"],
-        "josefinSans-bold": ["JosefinSans Bold", "sans-serif"],
-        rubik: ["Rubik", "sans-serif"],
+        "roboto-condensed": ["Roboto Condensed", "sans-serif"],
         workSans: ["WorkSans", "sans-serif"],
       },
       screens: {
@@ -36,5 +32,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 }

@@ -7,6 +7,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Home</title>
       </Head>
+      
       <div className="w-full h-full box-border p-4">Hello</div>
     </>
   )

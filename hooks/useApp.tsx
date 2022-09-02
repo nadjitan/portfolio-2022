@@ -5,7 +5,6 @@ import {
   ReactElement,
   SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from "react"
 
@@ -36,14 +35,6 @@ export const AppProvider: NextPage<{ children: ReactElement }> = props => {
     initialState.animation
   )
   const [theme, setTheme] = useState<IAppContext["theme"]>(initialState.theme)
-
-  useEffect(() => {
-    setTheme(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-    )
-  }, [])
 
   return (
     <AppContext.Provider value={{ animation, theme, setAnimState, setTheme }}>
