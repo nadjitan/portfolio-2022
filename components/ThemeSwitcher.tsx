@@ -10,7 +10,6 @@ interface IconProps {
 
 const ThemeSwitcher: FC<IconProps> = props => {
   const { theme, setTheme } = useAppContext()
-  let useDark = useRef<MediaQueryList | null>(null)
 
   useEffect(() => {
     setTheme(
@@ -18,10 +17,12 @@ const ThemeSwitcher: FC<IconProps> = props => {
         ? "dark"
         : "light"
     )
+
     // Change theme based on user's system
-    useDark.current = window.matchMedia("(prefers-color-scheme: dark)")
-    document.documentElement.classList.toggle("dark", useDark.current.matches)
-    useDark.current.addEventListener("change", e => {
+    let useDark = window.matchMedia("(prefers-color-scheme: dark)")
+    document.documentElement.classList.toggle("dark", useDark.matches)
+
+    useDark.addEventListener("change", e => {
       setTheme(theme === "light" ? "dark" : "light")
       document.documentElement.classList.toggle("dark", e.matches)
     })

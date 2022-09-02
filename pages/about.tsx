@@ -55,7 +55,7 @@ const About = () => {
               />
             </div>
             <h2 className="ml-0 mt-2 w-full text-center italic sm:ml-4 sm:text-start">
-              There's probably a JavaScript library or framework for that.
+              There&apos;s probably a JavaScript library or framework for that.
             </h2>
           </div>
 
