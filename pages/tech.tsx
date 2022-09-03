@@ -7,7 +7,10 @@ const Skills = () => {
       <Head>
         <title>Tech</title>
       </Head>
-      <div className="w-full h-full box-border p-4">Tech</div>
+
+      <div className="box-border h-full w-full p-4">
+        <h1>Tech</h1> <p>WIP</p>
+      </div>
     </>
   )
 }

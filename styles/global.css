@@ -88,7 +88,7 @@
     @apply list-inside list-disc;
   }
   .p-link {
-    @apply font-space-mono-bold hover:italic hover:underline;
+    @apply font-space-mono-bold decoration-2 underline-offset-4 hover:italic hover:underline;
   }
 
   button {

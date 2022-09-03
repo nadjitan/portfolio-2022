@@ -184,7 +184,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
         <title>Home</title>
       </Head>
 
-      <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px] wide:h-[820px] ">
+      <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px]">
         <nav className="flex w-full justify-between py-3 px-3 sm:px-0">
           <Link href="/">
             <h2
@@ -228,7 +228,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           <div
             className={`${
               menu ? "left-0" : "left-[-208px]"
-            } files-tree font-rubik absolute z-50 box-border flex h-full w-52 flex-col justify-between border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
+            } files-tree font-rubik absolute z-50 box-border flex h-full w-52 flex-col border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
 
             {loading && (
@@ -246,13 +246,13 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
             <button
               onClick={() => setMenu(false)}
-              className="flex w-full items-center justify-center rounded-none">
+              className="mt-auto flex w-full items-center justify-center rounded-none">
               CLOSE
               <ExitIcon svgClass="scale-75 fill-theme-background" />
             </button>
           </div>
 
-          <div className="files-tree font-rubik z-50 box-border hidden h-full w-full border-r-2 border-theme-on-background bg-theme-background pt-2 text-base sm:block">
+          <div className="files-tree font-rubik relative z-50 box-border hidden h-full w-full flex-col border-r-2 border-theme-on-background bg-theme-background pt-2 text-base sm:block">
             <RecursiveComponent files={tree} />
           </div>
 
