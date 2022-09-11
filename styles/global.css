@@ -76,7 +76,7 @@
     @apply text-xl font-medium md:text-xl lg:text-3xl;
   }
   h4 {
-    @apply text-lg font-medium;
+    @apply text-lg font-medium md:text-lg lg:text-2xl;
   }
   p {
     @apply text-sm md:text-base lg:text-lg;

@@ -117,7 +117,10 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             className={`btn-file font-cascadia-code ${
               clicked === files.name.toLowerCase() && "active-btn"
             }`}
-            onClick={() => setClicked(files.name.toLowerCase())}>
+            onClick={() => {
+              setClicked(files.name.toLowerCase())
+              setMenu(false)
+            }}>
             <FileIcon svgClass="fill-theme-on-background" />
             &nbsp;
             {files.name}.{files.type}
