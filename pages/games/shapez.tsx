@@ -7,6 +7,7 @@ import {
   RotateIcon,
 } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
+import { Tooltip } from "@material-tailwind/react"
 
 const tetrominoes = {
   I: [
@@ -357,16 +358,28 @@ const Shapez = () => {
         </div>
         <div>
           <div id="grid-shapez"></div>
+
           <div className=" mt-2 flex w-full justify-between">
             <h4 id="score">Score: 0</h4>
-            <a
-              title="Github"
-              href="https://github.com/Kapatid/shapez-game"
-              target="_blank"
-              rel="noreferrer">
-              <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
-            </a>
+
+            <Tooltip
+              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
+              placement="bottom"
+              content="source"
+              offset={{ mainAxis: -2 }}
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: -25 },
+              }}>
+              <a
+                href="https://github.com/Kapatid/shapez-game"
+                target="_blank"
+                rel="noreferrer">
+                <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
+              </a>
+            </Tooltip>
           </div>
+
           <div className="mt-10 flex w-full justify-between  sm:hidden">
             <div>
               <button className="rounded-xl">
@@ -375,6 +388,7 @@ const Shapez = () => {
                   spanClass="scale-150"
                 />
               </button>
+
               <button className="rounded-xl">
                 <CaretRightIcon
                   svgClass="fill-theme-background h-6 w-6"
@@ -382,6 +396,7 @@ const Shapez = () => {
                 />
               </button>
             </div>
+
             <button className="rounded-xl">
               <RotateIcon svgClass="stroke-theme-background h-6 w-6" />
             </button>

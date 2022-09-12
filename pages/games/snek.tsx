@@ -8,6 +8,7 @@ import {
   GithubIcon,
 } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
+import { Tooltip } from "@material-tailwind/react"
 
 interface Vector2D {
   x: number
@@ -198,16 +199,28 @@ const Snek = () => {
         </div>
         <div>
           <div id="grid-snek"></div>
+
           <div className="mt-[10px] flex w-full justify-between">
             <h4 id="score">Score: 0</h4>
-            <a
-              title="Github"
-              href="https://github.com/Kapatid/snek-game"
-              target="_blank"
-              rel="noreferrer">
-              <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
-            </a>
+            <Tooltip
+              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
+              placement="bottom"
+              content="source"
+              offset={{ mainAxis: -2 }}
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: -25 },
+              }}>
+              <a
+                title="Github"
+                href="https://github.com/Kapatid/snek-game"
+                target="_blank"
+                rel="noreferrer">
+                <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
+              </a>
+            </Tooltip>
           </div>
+
           <div className="mt-10 grid w-full place-items-center sm:hidden">
             <div className="grid  grid-cols-3 grid-rows-3">
               <button className="col-start-2 rounded-xl">
@@ -216,18 +229,21 @@ const Snek = () => {
                   spanClass="scale-150"
                 />
               </button>
+
               <button className="col-start-3 row-start-2 rounded-xl">
                 <CaretRightIcon
                   svgClass="fill-theme-background h-6 w-6"
                   spanClass="scale-150"
                 />
               </button>
+
               <button className="col-span-1 col-start-2 row-start-3 rounded-xl">
                 <CaretDownIcon
                   svgClass="fill-theme-background h-6 w-6"
                   spanClass="scale-150"
                 />
               </button>
+
               <button className="col-start-1 row-start-2 rounded-xl">
                 <CaretLeftIcon
                   svgClass="fill-theme-background h-6 w-6"

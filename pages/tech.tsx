@@ -23,8 +23,16 @@ const Skills = () => {
 
       <div className="box-border max-h-max min-h-full w-full p-4">
         <h1>tech</h1>{" "}
-        <p className="mt-2">
-          This site is made by me using{" "}
+        <p className="mt-2 text-xl sm:text-base">
+          This{" "}
+          <a
+            className="p-link"
+            href="https://github.com/nadjitan/portfolio-2022"
+            target="_blank"
+            rel="noreferrer">
+            site
+          </a>{" "}
+          is made by me using{" "}
           <a
             className="p-link"
             href="https://nextjs.org/"
@@ -43,7 +51,7 @@ const Skills = () => {
           . Here is more web related tech I currently use or know of:
         </p>
         <br />
-        <div className="flex h-max w-full flex-row flex-wrap gap-10">
+        <div className="flex h-max w-full flex-row flex-wrap gap-5 sm:gap-10">
           <div>
             <h4 className="text-lg font-semibold">LANGUAGES</h4>
             <div className="mt-2 flex h-max w-full flex-wrap gap-2">
@@ -51,7 +59,7 @@ const Skills = () => {
                 href="https://developer.mozilla.org/en-US/docs/Web/HTML"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#E34F26]">
                 <HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code>HTML</code>
               </a>
@@ -59,7 +67,7 @@ const Skills = () => {
                 href="https://developer.mozilla.org/en-US/docs/Web/CSS"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#1572B6]">
                 <CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code>CSS</code>
               </a>
@@ -67,7 +75,7 @@ const Skills = () => {
                 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#F7DF1E]">
                 <JSIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code className="text-[0.75rem]">JavaScript</code>
               </a>
@@ -75,7 +83,7 @@ const Skills = () => {
                 href="https://www.typescriptlang.org/"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#3178C6]">
                 <TSIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code className="text-[0.75rem]">TypeScript</code>
               </a>
@@ -89,7 +97,7 @@ const Skills = () => {
                 href="https://tailwindcss.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#06B6D4]">
                 <TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code className="text-sm">tailwind</code>
               </a>
@@ -103,7 +111,7 @@ const Skills = () => {
                 href="https://reactjs.org/"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#61DAFB]">
                 <ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code>ReactJS</code>
               </a>
@@ -141,7 +149,7 @@ const Skills = () => {
                 href="https://nuxtjs.org/"
                 target="_blank"
                 rel="noreferrer"
-                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
                 <NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code>NuxtJS</code>
               </a>
