@@ -15,7 +15,6 @@ import ThemeSwitcher from "../ThemeSwitcher"
 import { FC, useState, useEffect } from "react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
-import { Tooltip } from "@material-tailwind/react"
 
 const tree = {
   type: "root",
@@ -190,61 +189,37 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
       <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px]">
         <nav className="flex w-full justify-between py-3 pl-3 pr-4">
-          <Tooltip
-            className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
-            placement="right"
-            content="Hello 👨‍💻"
-            animate={{
-              mount: { scale: 1, x: 0 },
-              unmount: { scale: 0, x: -25 },
-            }}>
-            <span>
-              <Link href="/about">
-                <h2
-                  className="cursor-pointer font-semibold"
-                  onClick={() => {
-                    setClicked("about")
-                    setExpand(["portfolio 2022"])
-                  }}>
-                  nadjitan
-                </h2>
-              </Link>
-            </span>
-          </Tooltip>
+          <div className="tooltip tooltip-right" data-tip="Hello 👨‍💻">
+            <Link href="/about">
+              <h2
+                className="cursor-pointer font-semibold"
+                onClick={() => {
+                  setClicked("about")
+                  setExpand(["portfolio 2022"])
+                }}>
+                nadjitan
+              </h2>
+            </Link>
+          </div>
 
           <div className="flex gap-6">
-            <Tooltip
-              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
-              placement="bottom"
-              content="Github Profile"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: -25 },
-              }}>
-              <a
-                href="https://github.com/nadjitan"
-                className="grid"
-                target="_blank"
-                rel="noreferrer">
-                <GithubIcon svgClass="fill-theme-on-background scale-150 w-5 h-5" />
-              </a>
-            </Tooltip>
+            <a
+              href="https://github.com/nadjitan"
+              className="tooltip tooltip-bottom z-50 grid"
+              data-tip="Github Profile"
+              target="_blank"
+              rel="noreferrer">
+              <GithubIcon svgClass="fill-theme-on-background scale-150 w-5 h-5" />
+            </a>
 
-            <Tooltip
-              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
-              placement="bottom"
-              content="Change Theme"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: -25 },
-              }}>
-              <span>
-                <ThemeSwitcher
-                  spanClass="sm:mr-0 cursor-pointer"
-                  svgClass="fill-theme-on-background scale-150 w-5 h-5"
-                />
-              </span>
-            </Tooltip>
+            <span
+              className="tooltip tooltip-bottom z-50 grid"
+              data-tip="Change Theme">
+              <ThemeSwitcher
+                spanClass="sm:mr-0 cursor-pointer"
+                svgClass="fill-theme-on-background scale-150 w-5 h-5"
+              />
+            </span>
 
             <MenuIcon
               spanClass="sm:hidden cursor-pointer"

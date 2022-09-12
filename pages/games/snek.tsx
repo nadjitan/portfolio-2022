@@ -8,7 +8,6 @@ import {
   GithubIcon,
 } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
-import { Tooltip } from "@material-tailwind/react"
 
 interface Vector2D {
   x: number
@@ -184,11 +183,14 @@ const Snek = () => {
       <div id="file-snek">
         <div id="modal-snek">
           <h1>Snek 🐍</h1>
-          <p className="hidden sm:inline-block">
-            Movement: <kbd>W</kbd>
-            <kbd>A</kbd>
-            <kbd>S</kbd>
-            <kbd>D</kbd>
+          <p className="hidden pt-2 sm:inline-block">
+            Movement:
+            <span className="ml-1 inline-flex gap-1">
+              <kbd className="kbd">W</kbd>
+              <kbd className="kbd">A</kbd>
+              <kbd className="kbd">S</kbd>
+              <kbd className="kbd">D</kbd>
+            </span>
           </p>
           <button className="modal-btn" value="start">
             START
@@ -202,15 +204,8 @@ const Snek = () => {
 
           <div className="mt-[10px] flex w-full justify-between">
             <h4 id="score">Score: 0</h4>
-            <Tooltip
-              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
-              placement="bottom"
-              content="source"
-              offset={{ mainAxis: -2 }}
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: -25 },
-              }}>
+
+            <div className="tooltip tooltip-bottom" data-tip="source">
               <a
                 title="Github"
                 href="https://github.com/Kapatid/snek-game"
@@ -218,7 +213,7 @@ const Snek = () => {
                 rel="noreferrer">
                 <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
               </a>
-            </Tooltip>
+            </div>
           </div>
 
           <div className="mt-10 grid w-full place-items-center sm:hidden">

@@ -7,7 +7,6 @@ import {
   RotateIcon,
 } from "../../components/icons"
 import FilesLayout from "../../components/layouts/FilesLayout"
-import { Tooltip } from "@material-tailwind/react"
 
 const tetrominoes = {
   I: [
@@ -340,14 +339,16 @@ const Shapez = () => {
       <div id="file-shapez">
         <div id="modal">
           <h1>Shapez 🧱</h1>
-          <p className="hidden sm:inline-block">
-            Movement: <kbd>W</kbd>
-            <kbd>A</kbd>
-            <kbd>S</kbd>
-            <kbd>D</kbd>
+          <p className="hidden pt-2 sm:inline-block">
+            Movement:
+            <span className="ml-1 inline-flex gap-1">
+              <kbd className="kbd">A</kbd>
+              <kbd className="kbd">S</kbd>
+              <kbd className="kbd">D</kbd>
+            </span>
           </p>
           <p className="hidden sm:inline-block">
-            Rotate: <kbd>R</kbd>
+            Rotate: <kbd className="kbd">R</kbd>
           </p>
           <button className="modal-btn" value="start">
             START
@@ -362,22 +363,14 @@ const Shapez = () => {
           <div className=" mt-2 flex w-full justify-between">
             <h4 id="score">Score: 0</h4>
 
-            <Tooltip
-              className="rounded-md bg-theme-on-background py-2 font-space-mono-bold text-theme-background"
-              placement="bottom"
-              content="source"
-              offset={{ mainAxis: -2 }}
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: -25 },
-              }}>
+            <div className="tooltip tooltip-bottom" data-tip="source">
               <a
                 href="https://github.com/Kapatid/shapez-game"
                 target="_blank"
                 rel="noreferrer">
                 <GithubIcon svgClass="fill-theme-on-background h-6 w-6" />
               </a>
-            </Tooltip>
+            </div>
           </div>
 
           <div className="mt-10 flex w-full justify-between  sm:hidden">
