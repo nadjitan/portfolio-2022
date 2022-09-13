@@ -22,10 +22,18 @@ const tree = {
   children: [
     {
       type: "folder",
-      name: "Games",
+      name: "games",
       children: [
         { type: "js", name: "Snek" },
         { type: "js", name: "Shapez" },
+      ],
+    },
+    {
+      type: "folder",
+      name: "tools",
+      children: [
+        { type: "js", name: "dates" },
+        { type: "js", name: "todo" },
       ],
     },
     { type: "md", name: "about" },
@@ -83,13 +91,14 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
     let parentObjs: Tree[] = []
     let found = false
     function searchParentsObj(tree: Tree, toFind: string) {
+      if (found) return
       if (tree.children) {
-        for (let f of tree.children) {
+        tree.children.forEach(f => {
           if (f.name.toLowerCase() === toFind) {
             found = true
-            break
+            return
           } else searchParentsObj(f as Tree, toFind)
-        }
+        })
         if (found) parentObjs.push(tree)
       }
     }
@@ -104,7 +113,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
         let strings = ""
         parentObjs.forEach(f => {
           if (f.type !== "root") {
-            strings = strings + `/${f.name.toLowerCase()}`
+            strings = `${strings}/${f.name.toLowerCase()}`
           }
         })
 

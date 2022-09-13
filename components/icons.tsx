@@ -142,6 +142,28 @@ export const AstroIcon: FC<IconProps> = props => (
 )
 
 // SVGs from https://iconer.app
+export const SaveIcon: FC<IconProps> = props => (
+  <span title={props.title} onClick={props.onClick} className={props.spanClass}>
+    <svg
+      className={props.svgClass}
+      width="46"
+      height="46"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 14h8"></path>
+      <path d="M4 18.5h8"></path>
+      <path d="M4 9.5h16"></path>
+      <path d="M4 5h16"></path>
+      <path d="M15 16.5h5"></path>
+      <path d="M17.5 14v5"></path>
+    </svg>
+  </span>
+)
 export const QuoteLeftIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg

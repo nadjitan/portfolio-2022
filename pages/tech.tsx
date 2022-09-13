@@ -164,6 +164,7 @@ const Skills = () => {
             </div>
           </div>
         </div>
+        
         <div className="flex w-full justify-end pt-6">
           <a
             href="https://gist.github.com/nadjitan/6e0c933f0058a4e569da2c3c04eecb81"
