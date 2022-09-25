@@ -44,6 +44,10 @@ const LottieCB: FC<{
     anim.current!.setSpeed(3)
     // in json { ..., "ip" === start, "op" === max, ...}
     if (action.done) anim.current!.goToAndPlay(30, true)
+
+    return () => {
+      anim.current!.destroy()
+    }
   }, [])
 
   return (
@@ -91,6 +95,10 @@ const LottieTrash: FC<{
     trashEl.current!.onmouseleave = () => {
       anim.setDirection(-1)
       anim.play()
+    }
+
+    return () => {
+      anim.destroy()
     }
   }, [])
 
@@ -175,7 +183,10 @@ const Todo = () => {
               className="flex w-full items-center gap-2 border-2 border-theme-on-background bg-theme-background py-2 px-2 hover:bg-theme-on-background hover:text-theme-background [&_path]:stroke-theme-on-background [&_path]:hover:stroke-theme-background">
               <LottieCB action={a} setTodo={setTodo} />
 
-              <p className={a.done ? `italic line-through decoration-2` : ""}>
+              <p
+                className={`flex-1 truncate ${
+                  a.done ? `italic line-through decoration-2` : ""
+                }`}>
                 {a.name}
               </p>
 
