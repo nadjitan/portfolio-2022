@@ -33,16 +33,16 @@ const Dates = () => {
 
   const copyDate = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const div = e.currentTarget as HTMLDivElement
-    const copAlertDiv = document.getElementById("copy-alert")!
+    const copyAlertDiv = document.getElementById("copy-alert")!
 
     navigator.clipboard.writeText(
       div.lastElementChild?.firstElementChild?.textContent!
     )
 
-    copAlertDiv.classList.remove("alert-up")
+    copyAlertDiv.classList.remove("alert-up")
     // Not sure about performance
-    void copAlertDiv.offsetWidth
-    copAlertDiv.classList.add("alert-up")
+    void copyAlertDiv.offsetWidth
+    copyAlertDiv.classList.add("alert-up")
   }
 
   return (

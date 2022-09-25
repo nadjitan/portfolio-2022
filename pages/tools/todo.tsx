@@ -1,28 +1,122 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react"
-import { useEffect, useRef, useState } from "react"
-import lottie from "lottie-web"
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+import lottie, { AnimationItem } from "lottie-web"
 import cb from "../../public/data/checkBox.json"
 import trash from "../../public/data/trashV2.json"
 import uuid from "react-uuid"
 import { SaveIcon } from "../../components/icons"
 
+const LottieCB: FC<{
+  action: {
+    id: string
+    name: string
+    done: boolean
+  }
+  setTodo: Dispatch<
+    SetStateAction<{
+      title: string
+      actions: {
+        id: string
+        name: string
+        done: boolean
+      }[]
+    }>
+  >
+}> = ({ action, setTodo }) => {
+  const cbEl = useRef<HTMLSpanElement>(null)
+  const anim = useRef<AnimationItem | null>(null)
+
+  useEffect(() => {
+    anim.current = lottie.loadAnimation({
+      container: cbEl.current!,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: cb,
+    })
+    anim.current!.setSpeed(3)
+    // in json { ..., "ip" === start, "op" === max, ...}
+    if (action.done) anim.current!.goToAndPlay(30, true)
+  }, [])
+
+  return (
+    <span
+      ref={cbEl}
+      onClick={() => {
+        if (!action.done) {
+          anim.current!.setDirection(1)
+          anim.current!.play()
+        } else {
+          anim.current!.setDirection(-1)
+          anim.current!.play()
+        }
+
+        setTodo(prev => {
+          prev.actions.map(a => {
+            if (a.id === action.id) a.done = !a.done
+          })
+          return { ...prev }
+        })
+      }}
+      className="lottie-checkbox h-7 w-7 cursor-pointer"
+    />
+  )
+}
+
+const LottieTrash: FC<{
+  onClick: () => void
+}> = ({ onClick }) => {
+  const trashEl = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: trashEl.current!,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: trash,
+    })
+
+    trashEl.current!.onmouseover = () => {
+      anim.setDirection(1)
+      anim.play()
+    }
+    trashEl.current!.onmouseleave = () => {
+      anim.setDirection(-1)
+      anim.play()
+    }
+  }, [])
+
+  return (
+    <span
+      ref={trashEl}
+      onClick={() => onClick()}
+      className="lottie-trash ml-auto h-7 w-7 cursor-pointer"
+    />
+  )
+}
+
 const Todo = () => {
   const [parent] = useAutoAnimate<HTMLUListElement>()
   const [todo, setTodo] = useState({
     title: "todo",
-    todos: [
+    actions: [
       { id: uuid(), name: "Eat", done: false },
       { id: uuid(), name: "Code", done: true },
       { id: uuid(), name: "Sleep", done: false },
     ],
   })
 
-  const cbEls = useRef<HTMLSpanElement[]>([])
-  const trashEls = useRef<HTMLSpanElement[]>([])
-
   const addTodo = (name: string) => {
     setTodo(prev => {
-      prev.todos.push({
+      prev.actions.push({
         id: uuid(),
         name: name,
         done: false,
@@ -31,79 +125,6 @@ const Todo = () => {
       return { ...prev }
     })
   }
-
-  useEffect(() => {
-    cbEls.current = Array.from(
-      document.getElementsByClassName("lottie-checkbox")
-    ) as HTMLSpanElement[]
-    trashEls.current = Array.from(
-      document.getElementsByClassName("lottie-trash")
-    ) as HTMLSpanElement[]
-
-    cbEls.current.map((el, index) => {
-      const currTodo = todo.todos[index]
-      if (currTodo) {
-        let play = currTodo.done
-
-        const anim = lottie.loadAnimation({
-          container: el,
-          renderer: "svg",
-          loop: false,
-          autoplay: false,
-          animationData: cb,
-        })
-        anim.setSpeed(3)
-        // in json { ..., "ip" === start, "op" === max, ...}
-        if (play) anim.goToAndPlay(30, true)
-
-        el.onclick = () => {
-          if (!play) {
-            anim.setDirection(1)
-            anim.play()
-            play = true
-          } else {
-            anim.setDirection(-1)
-            anim.play()
-            play = false
-          }
-
-          setTodo(prev => {
-            const found = prev.todos.find(t => t.id === currTodo.id)
-            if (found) found.done = play
-            return prev
-          })
-        }
-      }
-    })
-
-    trashEls.current.map(el => {
-      const anim = lottie.loadAnimation({
-        container: el,
-        renderer: "svg",
-        loop: false,
-        autoplay: false,
-        animationData: trash,
-      })
-
-      el.onmouseover = () => {
-        anim.setDirection(1)
-        anim.play()
-      }
-      el.onmouseleave = () => {
-        anim.setDirection(-1)
-        anim.play()
-      }
-    })
-
-    return () => {
-      lottie.destroy()
-      cbEls.current.map(el => (el.onclick = null))
-      trashEls.current.map(el => {
-        el.onmouseover = null
-        el.onmouseleave = null
-      })
-    }
-  }, [todo])
 
   return (
     <div className="grid h-full w-full justify-center overflow-hidden">
@@ -148,20 +169,23 @@ const Todo = () => {
         <ul
           ref={parent}
           className="flex h-2/3 w-64 flex-col gap-2 overflow-y-auto">
-          {todo.todos.map(t => (
+          {todo.actions.map(a => (
             <li
-              key={t.id}
-              className="flex w-full items-center gap-2 border-2 border-theme-on-background py-2 px-2 hover:bg-theme-on-background hover:text-theme-background [&_path]:stroke-theme-on-background [&_path]:hover:stroke-theme-background">
-              <span className="lottie-checkbox h-7 w-7 cursor-pointer" />
+              key={a.id}
+              className="flex w-full items-center gap-2 border-2 border-theme-on-background bg-theme-background py-2 px-2 hover:bg-theme-on-background hover:text-theme-background [&_path]:stroke-theme-on-background [&_path]:hover:stroke-theme-background">
+              <LottieCB action={a} setTodo={setTodo} />
 
-              <p>{t.name}</p>
+              <p className={a.done ? `italic line-through decoration-2` : ""}>
+                {a.name}
+              </p>
 
-              <span
-                className="lottie-trash ml-auto h-7 w-7 cursor-pointer"
+              <LottieTrash
                 onClick={() =>
                   setTodo({
                     ...todo,
-                    todos: todo.todos.filter(todo => todo.id !== t.id && todo),
+                    actions: todo.actions.filter(
+                      todo => todo.id !== a.id && todo
+                    ),
                   })
                 }
               />
