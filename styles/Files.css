@@ -19,7 +19,7 @@
 .btn-file {
   @apply relative box-border flex w-max cursor-pointer
   select-none list-none
-  items-center rounded-md
+  items-center
   border-2
   border-transparent
   py-1
