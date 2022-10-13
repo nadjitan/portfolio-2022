@@ -82,8 +82,8 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   const [menu, setMenu] = useState(false)
   const [expand, setExpand] = useState(
     router.pathname.split("/")
-      ? [...paths, "portfolio 2022"]
-      : ["portfolio 2022"]
+      ? [...paths, tree.name.toLowerCase()]
+      : [tree.name.toLowerCase()]
   )
 
   // Component for each "folder" and "file"
@@ -147,6 +147,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       ) {
         expandDetails = true
       }
+      
       return (
         <details className="container-folder" open={expandDetails}>
           <summary
@@ -202,10 +203,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             <Link href="/about">
               <h2
                 className="cursor-pointer font-semibold"
-                onClick={() => {
-                  setClicked("about")
-                  setExpand(["portfolio 2022"])
-                }}>
+                onClick={() => setClicked("about")}>
                 nadjitan
               </h2>
             </Link>
@@ -248,7 +246,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
             {loading && (
               <div
-                className={`absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity`}>
+                className="absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity">
                 <CogIcon
                   svgClass="fill-theme-on-background scale-[2] h-6 w-6"
                   spanClass="mr-5 animate-spin"
@@ -277,8 +275,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             {children}
 
             {loading && (
-              <div
-                className={`absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex`}>
+              <div className="absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex">
                 <CogIcon
                   svgClass="fill-theme-on-background scale-[2] h-6 w-6"
                   spanClass="mr-5 animate-spin"

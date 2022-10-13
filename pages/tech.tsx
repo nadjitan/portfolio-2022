@@ -92,7 +92,7 @@ const Skills = () => {
 
           <div>
             <h4 className="text-lg font-semibold">CSS</h4>
-            <div className="mt-2 flex h-max w-full gap-2">
+            <div className="mt-2 flex h-max w-full flex-wrap gap-2">
               <a
                 href="https://tailwindcss.com/"
                 target="_blank"
@@ -105,8 +105,8 @@ const Skills = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold">UI FRAMEWORK</h4>
-            <div className="mt-2 flex h-max w-full gap-2">
+            <h4 className="text-lg font-semibold">WEB FRAMEWORKS</h4>
+            <div className="mt-2 flex h-max w-full flex-wrap gap-2">
               <a
                 href="https://reactjs.org/"
                 target="_blank"
@@ -131,12 +131,7 @@ const Skills = () => {
                 <VueIcon svgClass="fill-theme-on-background w-12 h-12" />
                 <code>VueJS</code>
               </a>
-            </div>
-          </div>
 
-          <div>
-            <h4 className="text-lg font-semibold">FRONTEND w/ BACKEND</h4>
-            <div className="mt-2 flex h-max w-full gap-2">
               <a
                 href="https://nextjs.org/"
                 target="_blank"
@@ -164,7 +159,6 @@ const Skills = () => {
             </div>
           </div>
         </div>
-        
         <div className="flex w-full justify-end pt-6">
           <a
             href="https://gist.github.com/nadjitan/6e0c933f0058a4e569da2c3c04eecb81"

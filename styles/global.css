@@ -48,6 +48,50 @@
   --shadow: rgb(51, 51, 51);
 }
 
+@keyframes head-shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  12.5% {
+    transform: translateX(-6px);
+  }
+
+  37.5% {
+    transform: translateX(5px);
+  }
+
+  62.5% {
+    transform: translateX(-3px);
+  }
+
+  87.5% {
+    transform: translateX(2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes alert-up {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+
+  40%,
+  90% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+
 @layer base {
   html,
   body,
@@ -108,55 +152,11 @@
     @apply text-white;
   }
 
-  @keyframes head-shake {
-    0 {
-      transform: translateX(0);
-    }
-
-    12.5% {
-      transform: translateX(-6px);
-    }
-
-    37.5% {
-      transform: translateX(5px);
-    }
-
-    62.5% {
-      transform: translateX(-3px);
-    }
-
-    87.5% {
-      transform: translateX(2px);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-
   .head-shake {
     animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0, 0.23, 1, 0.71);
     animation-name: head-shake;
     transform-orgin: center bottom;
-  }
-
-  @keyframes alert-up {
-    0 {
-      transform: translateY(0px);
-      opacity: 0;
-    }
-
-    40%,
-    90% {
-      transform: translateY(-20px);
-      opacity: 1;
-    }
-
-    100% {
-      transform: translateY(0px);
-      opacity: 0;
-    }
   }
 
   .alert-up {
