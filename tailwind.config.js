@@ -6,6 +6,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: theme => ({
+        DEFAULT: {
+          css: {
+            code: {
+              borderRadius: theme("borderRadius.sm"),
+              fontWeight: theme("fontWeight.normal"),
+              fontSize: theme("fontSize.xs"),
+              "&::before": {
+                content: '"" !important',
+              },
+              "&::after": {
+                content: '"" !important',
+              },
+            },
+          },
+        },
+      }),
       colors: {
         "theme-primary": "var(--primary)",
         "theme-secondary": "var(--secondary)",
@@ -32,5 +49,18 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")]
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+          ".tooltip": {
+            "--tooltip-text-color": "var(--background)",
+            "--tooltip-color": "var(--surface)",
+          },
+        },
+      },
+    ],
+  },
 }

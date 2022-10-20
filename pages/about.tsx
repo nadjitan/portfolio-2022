@@ -68,12 +68,12 @@ const About = () => {
           <div className="flex flex-col">
             <div className="flex w-full justify-center sm:justify-start">
               <QuoteLeftIcon
-                svgClass="h-6 w-6 sm:h-8 sm:w-8"
+                svgClass="h-6 w-6 sm:h-6 sm:w-6"
                 spanClass="inline-flex"
               />
               &nbsp;
               <QuoteRightIcon
-                svgClass="h-6 w-6 sm:h-8 sm:w-8"
+                svgClass="h-6 w-6 sm:h-6 sm:w-6"
                 spanClass="inline-flex"
               />
             </div>

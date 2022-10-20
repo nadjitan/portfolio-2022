@@ -186,10 +186,18 @@ const Snek = () => {
           <p className="hidden pt-2 sm:inline-block">
             Movement:
             <span className="ml-1 inline-flex gap-1">
-              <kbd className="kbd">W</kbd>
-              <kbd className="kbd">A</kbd>
-              <kbd className="kbd">S</kbd>
-              <kbd className="kbd">D</kbd>
+              <kbd className="kbd bg-theme-surface text-theme-background">
+                W
+              </kbd>
+              <kbd className="kbd bg-theme-surface text-theme-background">
+                A
+              </kbd>
+              <kbd className="kbd bg-theme-surface text-theme-background">
+                S
+              </kbd>
+              <kbd className="kbd bg-theme-surface text-theme-background">
+                D
+              </kbd>
             </span>
           </p>
           <button className="modal-btn" value="start">
@@ -202,7 +210,7 @@ const Snek = () => {
         <div>
           <div id="grid-snek"></div>
 
-          <div className="mt-[10px] flex w-full justify-between">
+          <div className="mt-[10px] flex w-full items-center justify-between">
             <h4 id="score">Score: 0</h4>
 
             <div className="tooltip tooltip-bottom" data-tip="source">

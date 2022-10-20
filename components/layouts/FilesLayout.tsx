@@ -15,38 +15,34 @@ import ThemeSwitcher from "../ThemeSwitcher"
 import { FC, useState, useEffect } from "react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
+import { addOrRemove } from "../../utils"
 
-const tree = {
-  type: "root",
-  name: "PORTFOLIO 2022",
-  children: [
-    {
-      type: "folder",
-      name: "games",
-      children: [
-        { type: "js", name: "Snek" },
-        { type: "js", name: "Shapez" },
-      ],
-    },
-    {
-      type: "folder",
-      name: "tools",
-      children: [
-        { type: "js", name: "dates" },
-        { type: "js", name: "todo" },
-      ],
-    },
-    { type: "md", name: "about" },
-    { type: "md", name: "projects" },
-    { type: "md", name: "tech" },
-  ],
+type Tree = {
+  type: string
+  name: string
+  children: (
+    | {
+        type: string
+        name: string
+        children: {
+          type: string
+          name: string
+        }[]
+      }
+    | {
+        type: string
+        name: string
+        children?: undefined
+      }
+  )[]
 }
-type Tree = typeof tree
-
-const addOrRemove = <T,>(arr: T[], item: T) =>
-  arr.includes(item) ? arr.filter(i => i !== item) : [...arr, item]
+const tree = process.env.projDir as unknown as Tree
 
 const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
+  // useEffect(() => {
+  //   console.debug(JSON.stringify(process.env.projDir, null, 2))
+  // }, [])
+
   // Router events
   const [loadComplete, setLoadComplete] = useState(true)
   const [loading, setLoading] = useState(false)
@@ -87,7 +83,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   )
 
   // Component for each "folder" and "file"
-  const RecursiveComponent: FC<{ files: typeof tree }> = ({ files }) => {
+  const RecursiveComponent: FC<{ files: Tree }> = ({ files }) => {
     let parentObjs: Tree[] = []
     let found = false
     function searchParentsObj(tree: Tree, toFind: string) {
@@ -132,7 +128,8 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             }}>
             <FileIcon svgClass="fill-theme-on-background" />
             &nbsp;
-            {files.name}.{files.type}
+            {files.name}
+            {files.type}
           </a>
         </Link>
       )
@@ -147,7 +144,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       ) {
         expandDetails = true
       }
-      
+
       return (
         <details className="container-folder" open={expandDetails}>
           <summary
@@ -216,14 +213,17 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
               data-tip="Github Profile"
               target="_blank"
               rel="noreferrer">
-              <GithubIcon svgClass="fill-theme-on-background scale-150 w-5 h-5" />
+              <GithubIcon
+                svgClass="fill-theme-on-background scale-150 w-5 h-5"
+                spanClass="items-center inline-flex"
+              />
             </a>
 
             <span
               className="tooltip tooltip-bottom z-50 grid"
               data-tip="Change Theme">
               <ThemeSwitcher
-                spanClass="sm:mr-0 cursor-pointer"
+                spanClass="sm:mr-0 cursor-pointer items-center inline-flex"
                 svgClass="fill-theme-on-background scale-150 w-5 h-5"
               />
             </span>
@@ -245,8 +245,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             <RecursiveComponent files={tree} />
 
             {loading && (
-              <div
-                className="absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity">
+              <div className="absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity">
                 <CogIcon
                   svgClass="fill-theme-on-background scale-[2] h-6 w-6"
                   spanClass="mr-5 animate-spin"

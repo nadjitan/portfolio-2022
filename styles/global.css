@@ -25,26 +25,31 @@
 
 :root {
   --primary: #dad7cd;
-  --secondary: rgb(51, 171, 160);
-  --tertiary: rgb(51, 171, 160);
-  --background: #fffbdb;
-  --surface: #30362f;
-  --error: rgb(176, 0, 32);
   --on-primary: rgb(255, 255, 255);
+
+  --secondary: rgb(51, 171, 160);
   --on-secondary: rgb(255, 255, 255);
-  --on-background: #30362f;
-  --on-surface: #fffbdb;
+
+  --background: white;
+  --on-background: var(--surface);
+
+  --surface: #1a1c2c;
+  --on-surface: var(--background);
+
+  --error: rgb(176, 0, 32);
   --on-error: rgb(255, 255, 255);
+
   --shadow: rgba(0, 0, 0, 0.205);
   --scrollbar-width: 8px;
 }
 
 .dark {
-  /* --primary: rgb(95, 186, 99); */
-  --background: #30362f;
-  --surface: #fffbdb;
-  --on-background: #fffbdb;
-  --on-surface: #30362f;
+  --background: #1a1c2c;
+  --on-background: var(--surface);
+
+  --surface: white;
+  --on-surface: var(--background);
+
   --shadow: rgb(51, 51, 51);
 }
 
@@ -125,9 +130,7 @@
   p {
     @apply text-sm md:text-base lg:text-lg;
   }
-  span {
-    @apply flex items-center;
-  }
+
   ul {
     @apply list-inside list-disc;
   }
@@ -136,7 +139,7 @@
   }
 
   button {
-    @apply h-max w-max cursor-pointer rounded-lg
+    @apply h-max w-max cursor-pointer rounded-xl
     border-2
     border-theme-on-background
     bg-theme-on-background

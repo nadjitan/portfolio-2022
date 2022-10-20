@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from "react"
+import { FC } from "react"
 
 export const Me: FC<{
   classess?: string
@@ -13,7 +13,7 @@ export const Me: FC<{
       xmlns="http://www.w3.org/2000/svg">
       <g
         id="l5jVP5DQuhENa3PwlOBG7a1"
-        fill="#30362f"
+        className="fill-theme-surface"
         transform="matrix(-1,0,0,1,5270,-1589.917)">
         <g id="g28">
           <path
@@ -40,7 +40,7 @@ export const Me: FC<{
       </g>
       <g
         id="l7Sj4XK9qiwtqxA7wNhhshC"
-        fill="#fffbdb"
+        className="fill-theme-background"
         transform="matrix(-1,0,0,1,5270,-1589.917)">
         <g id="g35">
           <path
@@ -78,7 +78,7 @@ export const Me2: FC<{
       xmlns="http://www.w3.org/2000/svg">
       <g
         id="l5jVP5DQuhENa3PwlOBG7a1"
-        fill="#fffbdb"
+        className="fill-theme-surface"
         transform="matrix(-1,0,0,1,5270,-1589.917)">
         <g id="g27">
           <path
@@ -105,7 +105,7 @@ export const Me2: FC<{
       </g>
       <g
         id="l7Sj4XK9qiwtqxA7wNhhshC"
-        fill="#30362f"
+        className="fill-theme-background"
         transform="matrix(-1,0,0,1,5270,-1589.917)">
         <g id="g34">
           <path
