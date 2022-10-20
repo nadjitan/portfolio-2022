@@ -196,7 +196,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
       <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px]">
         <nav className="flex w-full justify-between py-3 pl-3 pr-4">
-          <div className="tooltip tooltip-right" data-tip="Hello 👨‍💻">
+          <div className="tooltip tooltip-right" data-tip="Hello 🎅">
             <Link href="/about">
               <h2
                 className="cursor-pointer font-semibold"
