@@ -16,6 +16,8 @@ import { FC, useState, useEffect } from "react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import { addOrRemove } from "../../utils"
+import NextNProgress from "nextjs-progressbar"
+import { useAppContext } from "../../hooks/useApp"
 
 type Tree = {
   type: string
@@ -42,6 +44,8 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   // useEffect(() => {
   //   console.debug(JSON.stringify(process.env.projDir, null, 2))
   // }, [])
+
+  const { theme } = useAppContext()
 
   // Router events
   const [loadComplete, setLoadComplete] = useState(true)
@@ -195,7 +199,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       </Head>
 
       <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px]">
-        <nav className="flex w-full justify-between py-3 pl-3 pr-4">
+        <nav className="flex w-full justify-between border-b-2 border-b-theme-on-background py-3 pl-3 pr-4">
           <div className="tooltip tooltip-right" data-tip="Hello 🎅">
             <Link href="/about">
               <h2
@@ -237,7 +241,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           </div>
         </nav>
 
-        <div className="relative grid h-full w-full grid-cols-1 grid-rows-1 overflow-hidden border-t-2 border-t-theme-on-background sm:grid-cols-[200px,1fr]">
+        <div className="overflow-hidde relative grid h-full w-full grid-cols-1 grid-rows-1 sm:grid-cols-[200px,1fr]">
           <div
             className={`${
               menu ? "left-0" : "left-[-208px]"
@@ -269,8 +273,17 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           </div>
 
           <div
+            id="container-layout"
             onClick={() => setMenu(false)}
-            className="relative h-full w-full overflow-auto">
+            className="relative box-border h-full w-full overflow-auto">
+            <NextNProgress
+              color={theme === "light" ? "#1a1c2c" : "white"}
+              options={{
+                showSpinner: false,
+                parent: "#container-layout",
+              }}
+            />
+
             {children}
 
             {loading && (
