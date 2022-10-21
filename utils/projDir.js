@@ -17,6 +17,8 @@ module.exports = {
   get: dir => {
     if (dir.slice(-1) !== "/") dir += "/"
 
+    const mds = ["about", "projects", "tech", "themes"]
+
     /**
      * Generate a tree structure for pages
      *
@@ -46,7 +48,11 @@ module.exports = {
             return 0
           })
         } else {
-          tree.push({ name: parse(file.name).name, type: parse(file.name).ext })
+          const fileName = parse(file.name).name
+          tree.push({
+            name: fileName,
+            type: mds.includes(fileName) ? ".md" : parse(file.name).ext,
+          })
         }
       }
 

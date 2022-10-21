@@ -8,7 +8,7 @@ interface IconProps {
 }
 
 // Source: https://simpleicons.org/
-export const JSIcon: FC<IconProps> = props => (
+const JSIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -20,7 +20,7 @@ export const JSIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const TSIcon: FC<IconProps> = props => (
+const TSIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -32,7 +32,7 @@ export const TSIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const HTMLIcon: FC<IconProps> = props => (
+const HTMLIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -44,7 +44,7 @@ export const HTMLIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CSSIcon: FC<IconProps> = props => (
+const CSSIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -56,7 +56,7 @@ export const CSSIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const ReactIcon: FC<IconProps> = props => (
+const ReactIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -68,7 +68,7 @@ export const ReactIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const SolidIcon: FC<IconProps> = props => (
+const SolidIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -80,7 +80,7 @@ export const SolidIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const VueIcon: FC<IconProps> = props => (
+const VueIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -92,7 +92,7 @@ export const VueIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const TailwindIcon: FC<IconProps> = props => (
+const TailwindIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -104,7 +104,7 @@ export const TailwindIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const NextJSIcon: FC<IconProps> = props => (
+const NextJSIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -116,7 +116,7 @@ export const NextJSIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const NuxtIcon: FC<IconProps> = props => (
+const NuxtIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -128,7 +128,7 @@ export const NuxtIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const AstroIcon: FC<IconProps> = props => (
+const AstroIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -142,7 +142,7 @@ export const AstroIcon: FC<IconProps> = props => (
 )
 
 // SVGs from https://iconer.app
-export const SaveIcon: FC<IconProps> = props => (
+const SaveIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -164,7 +164,7 @@ export const SaveIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const QuoteLeftIcon: FC<IconProps> = props => (
+const QuoteLeftIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -177,7 +177,7 @@ export const QuoteLeftIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const QuoteRightIcon: FC<IconProps> = props => (
+const QuoteRightIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -190,7 +190,7 @@ export const QuoteRightIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const RightArrowIcon: FC<IconProps> = props => (
+const RightArrowIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -202,7 +202,7 @@ export const RightArrowIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const DownArrowIcon: FC<IconProps> = props => (
+const DownArrowIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -214,7 +214,7 @@ export const DownArrowIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const FileIcon: FC<IconProps> = props => (
+const FileIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -226,7 +226,7 @@ export const FileIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const FolderIcon: FC<IconProps> = props => (
+const FolderIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -238,7 +238,7 @@ export const FolderIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const FolderOpenIcon: FC<IconProps> = props => (
+const FolderOpenIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -250,7 +250,7 @@ export const FolderOpenIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const GithubIcon: FC<IconProps> = props => (
+const GithubIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -269,7 +269,7 @@ export const GithubIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const SunIcon: FC<IconProps> = props => (
+const SunIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -286,7 +286,7 @@ export const SunIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const MoonIcon: FC<IconProps> = props => (
+const MoonIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -299,7 +299,7 @@ export const MoonIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const ExitIcon: FC<IconProps> = props => (
+const ExitIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -312,7 +312,7 @@ export const ExitIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const MenuIcon: FC<IconProps> = props => (
+const MenuIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -324,7 +324,7 @@ export const MenuIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CaretUpIcon: FC<IconProps> = props => (
+const CaretUpIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -338,7 +338,7 @@ export const CaretUpIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CaretLeftIcon: FC<IconProps> = props => (
+const CaretLeftIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -352,7 +352,7 @@ export const CaretLeftIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CaretRightIcon: FC<IconProps> = props => (
+const CaretRightIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -366,7 +366,7 @@ export const CaretRightIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CaretDownIcon: FC<IconProps> = props => (
+const CaretDownIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -380,7 +380,7 @@ export const CaretDownIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const RotateIcon: FC<IconProps> = props => (
+const RotateIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       className={props.svgClass}
@@ -398,7 +398,7 @@ export const RotateIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
-export const CogIcon: FC<IconProps> = props => (
+const CogIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -413,3 +413,36 @@ export const CogIcon: FC<IconProps> = props => (
     </svg>
   </span>
 )
+
+export {
+  CogIcon,
+  RotateIcon,
+  CaretDownIcon,
+  CaretRightIcon,
+  CaretLeftIcon,
+  CaretUpIcon,
+  MenuIcon,
+  ExitIcon,
+  MoonIcon,
+  SunIcon,
+  GithubIcon,
+  FolderOpenIcon,
+  FolderIcon,
+  DownArrowIcon,
+  RightArrowIcon,
+  QuoteRightIcon,
+  QuoteLeftIcon,
+  SaveIcon,
+  FileIcon,
+  AstroIcon,
+  NuxtIcon,
+  NextJSIcon,
+  TailwindIcon,
+  VueIcon,
+  SolidIcon,
+  ReactIcon,
+  CSSIcon,
+  HTMLIcon,
+  TSIcon,
+  JSIcon,
+}

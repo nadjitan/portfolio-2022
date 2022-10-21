@@ -1,12 +1,19 @@
 import type { NextPage } from "next"
+import dynamic from "next/dynamic"
 import Head from "next/head"
 import { FC } from "react"
 
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+// import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+const SyntaxHighlighter = dynamic(
+  () => import("react-syntax-highlighter/dist/cjs/prism-async-light"),
+  {
+    loading: () => <p className="italic">Loading codes...</p>,
+  }
+)
+
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx"
 import nightOwl from "react-syntax-highlighter/dist/cjs/styles/prism/night-owl"
-
-SyntaxHighlighter.registerLanguage("tsx", tsx)
+// SyntaxHighlighter.registerLanguage("tsx", tsx)
 
 const CodeHighlighter: FC<{ text: string }> = ({ text }) => {
   return (
@@ -15,11 +22,6 @@ const CodeHighlighter: FC<{ text: string }> = ({ text }) => {
       lineProps={{
         style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
       }}
-      // lineProps={{
-      //   style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-      // }}
-      // wrapLines={true}
-      wrapLongLines={true}
       style={nightOwl}
       customStyle={{ padding: "0.5px", height: "max-content" }}>
       {text}
@@ -33,6 +35,8 @@ const Themes: NextPage = () => {
     // Just a comment
     const one = 1
     const hello = "hello"
+
+    return <div>Hello world! {hello}</div>
   }
   `
 

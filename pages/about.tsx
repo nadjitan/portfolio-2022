@@ -1,5 +1,7 @@
 import Head from "next/head"
-import { QuoteLeftIcon, QuoteRightIcon } from "../components/icons"
+
+import { QuoteRightIcon, QuoteLeftIcon } from "../components/icons"
+
 import FilesLayout from "../components/layouts/FilesLayout"
 import { Me, Me2 } from "../components/Me"
 import { useAppContext } from "../hooks/useApp"
@@ -15,8 +17,8 @@ const About = () => {
         <title>About</title>
       </Head>
 
-      <article className="relative box-border flex h-full w-full flex-col overflow-y-auto overflow-x-hidden p-4">
-        <h1 className="text-theme-on-background">about me</h1>
+      <article className="relative box-border flex h-full w-full flex-col p-4">
+        <h1>about me</h1>
         <p className="mt-2 text-xl sm:text-base">
           Video Games 🎮... video games is what led me to be a web developer 👨‍💻.
           It made me explore technologies that people would have never guessed

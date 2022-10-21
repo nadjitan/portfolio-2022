@@ -48,30 +48,30 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   const { theme } = useAppContext()
 
   // Router events
-  const [loadComplete, setLoadComplete] = useState(true)
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    Router.events.on("routeChangeStart", () => {
-      setLoadComplete(false)
-      setTimeout(() => !loadComplete && setLoading(true), 500)
-    })
-    Router.events.on("routeChangeComplete", () => {
-      setLoading(false)
-      setLoadComplete(true)
-    })
-    Router.events.on("routeChangeError", () => setLoading(false))
-    return () => {
-      Router.events.off("routeChangeStart", () => {
-        setLoadComplete(false)
-        setTimeout(() => !loadComplete && setLoading(true), 500)
-      })
-      Router.events.off("routeChangeComplete", () => {
-        setLoading(false)
-        setLoadComplete(true)
-      })
-      Router.events.off("routeChangeError", () => setLoading(false))
-    }
-  }, [Router.events])
+  // const [loadComplete, setLoadComplete] = useState(true)
+  // const [loading, setLoading] = useState(false)
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", () => {
+  //     setLoadComplete(false)
+  //     setTimeout(() => !loadComplete && setLoading(true), 500)
+  //   })
+  //   Router.events.on("routeChangeComplete", () => {
+  //     setLoading(false)
+  //     setLoadComplete(true)
+  //   })
+  //   Router.events.on("routeChangeError", () => setLoading(false))
+  //   return () => {
+  //     Router.events.off("routeChangeStart", () => {
+  //       setLoadComplete(false)
+  //       setTimeout(() => !loadComplete && setLoading(true), 500)
+  //     })
+  //     Router.events.off("routeChangeComplete", () => {
+  //       setLoading(false)
+  //       setLoadComplete(true)
+  //     })
+  //     Router.events.off("routeChangeError", () => setLoading(false))
+  //   }
+  // }, [Router.events])
   const router = useRouter()
 
   // "File system" events
@@ -241,14 +241,14 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
           </div>
         </nav>
 
-        <div className="overflow-hidde relative grid h-full w-full grid-cols-1 grid-rows-1 sm:grid-cols-[200px,1fr]">
+        <div className="relative grid h-full w-full grid-cols-1 grid-rows-1 overflow-hidden sm:grid-cols-[200px,1fr]">
           <div
             className={`${
               menu ? "left-0" : "left-[-208px]"
             } files-tree font-rubik absolute z-50 box-border flex h-full w-52 flex-col border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
 
-            {loading && (
+            {/* {loading && (
               <div className="absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity">
                 <CogIcon
                   svgClass="fill-theme-on-background scale-[2] h-6 w-6"
@@ -258,7 +258,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
                   Loading...
                 </h3>
               </div>
-            )}
+            )} */}
 
             <button
               onClick={() => setMenu(false)}
@@ -268,14 +268,14 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             </button>
           </div>
 
-          <div className="files-tree font-rubik relative z-50 box-border hidden h-full w-full flex-col border-r-2 border-theme-on-background bg-theme-background pt-2 text-base sm:block">
+          <div className="files-tree font-rubik relative z-50 box-border hidden h-full w-full overflow-auto border-r-2 border-theme-on-background bg-theme-background pt-2 text-base sm:block">
             <RecursiveComponent files={tree} />
           </div>
 
           <div
             id="container-layout"
             onClick={() => setMenu(false)}
-            className="relative box-border h-full w-full overflow-auto">
+            className="h-full w-full overflow-y-auto overflow-x-hidden">
             <NextNProgress
               color={theme === "light" ? "#1a1c2c" : "white"}
               options={{
@@ -286,7 +286,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
             {children}
 
-            {loading && (
+            {/* {loading && (
               <div className="absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex">
                 <CogIcon
                   svgClass="fill-theme-on-background scale-[2] h-6 w-6"
@@ -296,7 +296,7 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
                   Loading...
                 </h3>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </main>
