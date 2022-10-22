@@ -1,7 +1,7 @@
 import { FC } from "react"
 
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
-import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx"
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx"
 import nightOwl from "react-syntax-highlighter/dist/cjs/styles/prism/night-owl"
 
 SyntaxHighlighter.registerLanguage("tsx", tsx)
