@@ -5,14 +5,14 @@ import "../styles/Shapez.css"
 import "../styles/Snek.css"
 import type { AppProps } from "next/app"
 import { AppProvider } from "../hooks/useApp"
-import FilesLayout from "../components/layouts/FilesLayout"
+import MainLayout from "../components/layouts/main-layout"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
-      <FilesLayout>
+      <MainLayout>
         <Component {...pageProps} />
-      </FilesLayout>
+      </MainLayout>
     </AppProvider>
   )
 }

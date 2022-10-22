@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from "react"
-import { MoonIcon, SunIcon } from "../components/icons"
+import { MoonIcon, SunIcon } from "./icons"
 import { useAppContext } from "../hooks/useApp"
 
 interface IconProps {

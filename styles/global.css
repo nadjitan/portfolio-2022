@@ -139,14 +139,15 @@
   }
 
   button {
-    @apply h-max w-max cursor-pointer rounded-xl
+    @apply h-max w-max cursor-pointer rounded-full
     border-2
     border-theme-on-background
     bg-theme-on-background
-    px-4
+    px-5
     py-2
-    font-space-mono-bold
+    font-cascadia-code
     text-base
+    font-bold
     text-theme-background
     active:bg-theme-background
     active:text-theme-on-background;

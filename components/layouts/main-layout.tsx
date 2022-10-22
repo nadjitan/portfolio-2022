@@ -11,7 +11,7 @@ import {
   MenuIcon,
   RightArrowIcon,
 } from "../icons"
-import ThemeSwitcher from "../ThemeSwitcher"
+import ThemeSwitcher from "../theme-switcher"
 import { FC, useState, useEffect } from "react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
@@ -40,7 +40,7 @@ type Tree = {
 }
 const tree = process.env.projDir as unknown as Tree
 
-const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
+const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   // useEffect(() => {
   //   console.debug(JSON.stringify(process.env.projDir, null, 2))
   // }, [])
@@ -304,4 +304,4 @@ const FilesLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   )
 }
 
-export default FilesLayout
+export default MainLayout

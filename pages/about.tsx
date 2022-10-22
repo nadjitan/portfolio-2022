@@ -1,10 +1,13 @@
+import dynamic from "next/dynamic"
 import Head from "next/head"
 
 import { QuoteRightIcon, QuoteLeftIcon } from "../components/icons"
 
-import FilesLayout from "../components/layouts/FilesLayout"
-import { Me, Me2 } from "../components/Me"
+import MainLayout from "../components/layouts/main-layout"
 import { useAppContext } from "../hooks/useApp"
+
+const Me = dynamic(() => import("../components/me").then(mod => mod.Me))
+const Me2 = dynamic(() => import("../components/me").then(mod => mod.Me2))
 
 const classess = "w-[800px] sm:mt-0 mt-8"
 
@@ -94,5 +97,5 @@ const About = () => {
     </>
   )
 }
-About.Layout = FilesLayout
+About.Layout = MainLayout
 export default About

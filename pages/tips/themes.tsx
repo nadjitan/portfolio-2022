@@ -1,33 +1,10 @@
 import type { NextPage } from "next"
 import dynamic from "next/dynamic"
 import Head from "next/head"
-import { FC } from "react"
 
-// import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
-const SyntaxHighlighter = dynamic(
-  () => import("react-syntax-highlighter/dist/cjs/prism-async-light"),
-  {
-    loading: () => <p className="italic">Loading codes...</p>,
-  }
-)
-
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx"
-import nightOwl from "react-syntax-highlighter/dist/cjs/styles/prism/night-owl"
-// SyntaxHighlighter.registerLanguage("tsx", tsx)
-
-const CodeHighlighter: FC<{ text: string }> = ({ text }) => {
-  return (
-    <SyntaxHighlighter
-      language="tsx"
-      lineProps={{
-        style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-      }}
-      style={nightOwl}
-      customStyle={{ padding: "0.5px", height: "max-content" }}>
-      {text}
-    </SyntaxHighlighter>
-  )
-}
+const CodeBlock = dynamic(() => import("../../components/code-block"), {
+  loading: () => <p className="italic">Loading codes...</p>,
+})
 
 const Themes: NextPage = () => {
   const codeString = `
@@ -43,7 +20,7 @@ const Themes: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Blog - Themes</title>
+        <title>Tips - Themes</title>
       </Head>
 
       <article className="prose relative box-border h-full w-full max-w-none overflow-y-auto overflow-x-hidden p-4 wide:prose-xl">
@@ -55,13 +32,13 @@ const Themes: NextPage = () => {
           modi doloremque eum ipsa. Aperiam laboriosam, sapiente facere sint
           repellendus vitae voluptatibus perferendis?
         </p>
-        <CodeHighlighter text={codeString} />
+        <CodeBlock text={codeString} />
 
         <p className="text-theme-on-background">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           Exercitationem, natus?
         </p>
-        <CodeHighlighter text={codeString} />
+        <CodeBlock text={codeString} />
       </article>
     </>
   )

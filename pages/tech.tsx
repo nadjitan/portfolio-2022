@@ -1,20 +1,43 @@
+import dynamic from "next/dynamic"
 import Head from "next/head"
-import {
-  AstroIcon,
-  CSSIcon,
-  HTMLIcon,
-  JSIcon,
-  NextJSIcon,
-  NuxtIcon,
-  ReactIcon,
-  SolidIcon,
-  TailwindIcon,
-  TSIcon,
-  VueIcon,
-} from "../components/icons"
-import FilesLayout from "../components/layouts/FilesLayout"
 
-const Skills = () => {
+import MainLayout from "../components/layouts/main-layout"
+
+const AstroIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.AstroIcon)
+)
+const CSSIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.CSSIcon)
+)
+const HTMLIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.HTMLIcon)
+)
+const JSIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.JSIcon)
+)
+const NextJSIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.NextJSIcon)
+)
+const NuxtIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.NuxtIcon)
+)
+const ReactIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.ReactIcon)
+)
+const SolidIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.SolidIcon)
+)
+const TailwindIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.TailwindIcon)
+)
+const TSIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.TSIcon)
+)
+const VueIcon = dynamic(() =>
+  import("../components/icons").then(mod => mod.VueIcon)
+)
+
+const Tech = () => {
   return (
     <>
       <Head>
@@ -173,6 +196,6 @@ const Skills = () => {
   )
 }
 
-Skills.Layout = FilesLayout
+Tech.Layout = MainLayout
 
-export default Skills
+export default Tech
