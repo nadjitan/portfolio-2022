@@ -5,22 +5,27 @@
 @font-face {
   font-family: "Space Mono Bold";
   src: url(../public/fonts/h2/SpaceMono-Bold.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Space Mono Regular";
   src: url(../public/fonts/h2/SpaceMono-Regular.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Cascadia Code";
   src: url(../public/fonts/code/CascadiaCode.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Roboto Condensed";
   src: url(../public/fonts/h1/RobotoCondensed.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "WorkSans";
   src: url(../public/fonts/p/WorkSans.ttf) format("truetype");
+  font-display: swap;
 }
 
 :root {

@@ -335,6 +335,7 @@ const Shapez = () => {
     <>
       <Head>
         <title>Shapez 🧱</title>
+        <meta name="description" content="A simple tetris clone game." />
       </Head>
       <div id="file-shapez">
         <div id="modal">
@@ -372,6 +373,7 @@ const Shapez = () => {
 
             <div className="tooltip tooltip-bottom" data-tip="source">
               <a
+                aria-label={"Go to github of tetris clone"}
                 href="https://github.com/Kapatid/shapez-game"
                 target="_blank"
                 rel="noreferrer">

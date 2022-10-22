@@ -22,6 +22,10 @@ const Themes: NextPage = () => {
     <>
       <Head>
         <title>Tips - Themes</title>
+        <meta
+          name="description"
+          content="Test tips page."
+        />
       </Head>
 
       <article className="prose relative box-border h-full w-full max-w-none overflow-y-auto overflow-x-hidden p-4 wide:prose-xl">

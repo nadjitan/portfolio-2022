@@ -123,6 +123,7 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       return (
         <Link href={url}>
           <a
+            aria-label={"Go to page " + files.name}
             className={`btn-file font-cascadia-code ${
               clicked === files.name.toLowerCase() && "active-btn"
             }`}
@@ -212,6 +213,7 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
           <div className="flex gap-6">
             <a
+              aria-label={"Go to Github page"}
               href="https://github.com/nadjitan"
               className="tooltip tooltip-bottom z-50 grid"
               data-tip="Github Profile"

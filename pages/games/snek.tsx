@@ -179,6 +179,7 @@ const Snek = () => {
     <>
       <Head>
         <title>Snek 🐍</title>
+        <meta name="description" content="A simple snake clone game." />
       </Head>
       <div id="file-snek">
         <div id="modal-snek">
@@ -215,6 +216,7 @@ const Snek = () => {
 
             <div className="tooltip tooltip-bottom" data-tip="source">
               <a
+                aria-label={"Go to github of snake clone"}
                 title="Github"
                 href="https://github.com/Kapatid/snek-game"
                 target="_blank"

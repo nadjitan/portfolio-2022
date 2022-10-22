@@ -6,6 +6,10 @@ const nextConfig = {
   env: {
     projDir: projDir.get("pages"),
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 }
 
 module.exports = nextConfig

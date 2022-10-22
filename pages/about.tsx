@@ -29,6 +29,7 @@ const About = () => {
     <>
       <Head>
         <title>About</title>
+        <meta name="description" content="All about me as a web developer." />
       </Head>
 
       <article className="relative box-border flex h-full w-full flex-col p-4">
@@ -39,6 +40,7 @@ const About = () => {
           to exist. Soon after many years of obsessing over video games and
           internet culture I discovered the{" "}
           <a
+            aria-label={"Go to tech links"}
             className="p-link"
             href="https://gist.github.com/nadjitan/6e0c933f0058a4e569da2c3c04eecb81"
             target="_blank"
@@ -47,6 +49,7 @@ const About = () => {
           </a>
           . Things such as{" "}
           <a
+            aria-label={"Go to web reactivity article"}
             className="p-link"
             href="https://www.infoworld.com/article/3661810/reactive-javascript-the-evolution-of-front-end-architecture.html"
             target="_blank"
@@ -55,6 +58,7 @@ const About = () => {
           </a>{" "}
           in a website blew my mind and the{" "}
           <a
+            aria-label={"Go to state of js website"}
             className="p-link"
             href="https://stateofjs.com/en-us/"
             target="_blank"
@@ -62,6 +66,7 @@ const About = () => {
             rate of growth
           </a>{" "}
           <a
+            aria-label={"Go to Javascript website"}
             className="p-link"
             href="https://www.javascript.com/"
             target="_blank"
@@ -71,6 +76,7 @@ const About = () => {
           have shown made it easy for beginners to learn coding. That is how I
           got into coding and I am{" "}
           <a
+            aria-label={"Go to Snyk io article about npm's milestone"}
             className="p-link"
             href="https://snyk.io/blog/npm-passes-the-1-millionth-package-milestone-what-can-we-learn/"
             target="_blank"
@@ -85,7 +91,7 @@ const About = () => {
             <div className="flex flex-col">
               <div className="flex w-full justify-center sm:justify-start">
                 <QuoteLeftIcon
-                  svgClass="h-6 w-6 sm:h-6 sm:w-6" 
+                  svgClass="h-6 w-6 sm:h-6 sm:w-6"
                   spanClass="inline-flex"
                 />
                 &nbsp;

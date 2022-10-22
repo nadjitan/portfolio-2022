@@ -44,6 +44,10 @@ const Tech = () => {
     <>
       <Head>
         <title>Tech</title>
+        <meta
+          name="description"
+          content="This is a list of some of the web tech that I currntly user or know of."
+        />
       </Head>
 
       <div className="box-border max-h-max min-h-full w-full p-4">
@@ -51,6 +55,7 @@ const Tech = () => {
         <p className="mt-2 text-xl sm:text-base">
           This{" "}
           <a
+            aria-label={"Go to github this website"}
             className="p-link"
             href="https://github.com/nadjitan/portfolio-2022"
             target="_blank"
@@ -59,6 +64,7 @@ const Tech = () => {
           </a>{" "}
           is made by me using{" "}
           <a
+            aria-label={"Go to website of NextJS"}
             className="p-link"
             href="https://nextjs.org/"
             target="_blank"
@@ -67,6 +73,7 @@ const Tech = () => {
           </a>{" "}
           and hosted in{" "}
           <a
+            aria-label={"Go to website of Vercel"}
             className="p-link"
             href="https://vercel.com"
             target="_blank"
@@ -82,6 +89,7 @@ const Tech = () => {
               <h4 className="text-lg font-semibold">LANGUAGES</h4>
               <div className="mt-2 flex h-max w-full flex-wrap gap-2">
                 <a
+                  aria-label={"Go to website of HTML"}
                   href="https://developer.mozilla.org/en-US/docs/Web/HTML"
                   target="_blank"
                   rel="noreferrer"
@@ -90,6 +98,7 @@ const Tech = () => {
                   <code>HTML</code>
                 </a>
                 <a
+                  aria-label={"Go to website of CSS"}
                   href="https://developer.mozilla.org/en-US/docs/Web/CSS"
                   target="_blank"
                   rel="noreferrer"
@@ -98,6 +107,7 @@ const Tech = () => {
                   <code>CSS</code>
                 </a>
                 <a
+                  aria-label={"Go to website of Javascript"}
                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
                   target="_blank"
                   rel="noreferrer"
@@ -106,6 +116,7 @@ const Tech = () => {
                   <code className="text-[0.75rem]">JavaScript</code>
                 </a>
                 <a
+                  aria-label={"Go to website of typescript"}
                   href="https://www.typescriptlang.org/"
                   target="_blank"
                   rel="noreferrer"
@@ -120,6 +131,7 @@ const Tech = () => {
               <h4 className="text-lg font-semibold">CSS</h4>
               <div className="mt-2 flex h-max w-full flex-wrap gap-2">
                 <a
+                  aria-label={"Go to website of tailwind css"}
                   href="https://tailwindcss.com/"
                   target="_blank"
                   rel="noreferrer"
@@ -134,6 +146,7 @@ const Tech = () => {
               <h4 className="text-lg font-semibold">WEB FRAMEWORKS</h4>
               <div className="mt-2 flex h-max w-full flex-wrap gap-2">
                 <a
+                  aria-label={"Go to website of reactjs"}
                   href="https://reactjs.org/"
                   target="_blank"
                   rel="noreferrer"
@@ -142,6 +155,7 @@ const Tech = () => {
                   <code>ReactJS</code>
                 </a>
                 <a
+                  aria-label={"Go to website of solidjs"}
                   href="https://www.solidjs.com/"
                   target="_blank"
                   rel="noreferrer"
@@ -150,6 +164,7 @@ const Tech = () => {
                   <code>SolidJS</code>
                 </a>
                 <a
+                  aria-label={"Go to website of vuejs"}
                   href="https://vuejs.org/"
                   target="_blank"
                   rel="noreferrer"
@@ -159,6 +174,7 @@ const Tech = () => {
                 </a>
 
                 <a
+                  aria-label={"Go to website of nextjs"}
                   href="https://nextjs.org/"
                   target="_blank"
                   rel="noreferrer"
@@ -167,6 +183,7 @@ const Tech = () => {
                   <code>NextJS</code>
                 </a>
                 <a
+                  aria-label={"Go to website of nuxtjs"}
                   href="https://nuxtjs.org/"
                   target="_blank"
                   rel="noreferrer"
@@ -175,6 +192,7 @@ const Tech = () => {
                   <code>NuxtJS</code>
                 </a>
                 <a
+                  aria-label={"Go to website of astrojs"}
                   href="https://astro.build/"
                   target="_blank"
                   rel="noreferrer"
@@ -188,6 +206,7 @@ const Tech = () => {
         </Suspense>
         <div className="flex w-full justify-end pt-6">
           <a
+            aria-label={"Go to more links of tech"}
             href="https://gist.github.com/nadjitan/6e0c933f0058a4e569da2c3c04eecb81"
             target="_blank"
             rel="noreferrer"
