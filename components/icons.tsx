@@ -1,12 +1,11 @@
 import { FC } from "react"
 
-interface IconProps {
+export interface IconProps {
   title?: string
   spanClass?: string
   svgClass?: string
   onClick?: () => void
 }
-
 // Source: https://simpleicons.org/
 const JSIcon: FC<IconProps> = props => (
   <span title={props.title} onClick={props.onClick} className={props.spanClass}>

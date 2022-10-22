@@ -1,9 +1,10 @@
 import type { NextPage } from "next"
+import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import Head from "next/head"
 
 const CodeBlock = dynamic(() => import("../../components/code-block"), {
-  loading: () => <p className="italic">Loading codes...</p>,
+  suspense: true,
 })
 
 const Themes: NextPage = () => {
@@ -32,13 +33,17 @@ const Themes: NextPage = () => {
           modi doloremque eum ipsa. Aperiam laboriosam, sapiente facere sint
           repellendus vitae voluptatibus perferendis?
         </p>
-        <CodeBlock text={codeString} />
+        <Suspense fallback={<p className="italic">Loading codes...</p>}>
+          <CodeBlock text={codeString} />
+        </Suspense>
 
         <p className="text-theme-on-background">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           Exercitationem, natus?
         </p>
-        <CodeBlock text={codeString} />
+        <Suspense fallback={<p className="italic">Loading codes...</p>}>
+          <CodeBlock text={codeString} />
+        </Suspense>
       </article>
     </>
   )

@@ -1,11 +1,13 @@
 import { FC } from "react"
 
-export const Me: FC<{
-  classess?: string
-}> = ({ classess }) => {
+export interface PicProps {
+  classes?: string
+}
+
+const Me: FC<PicProps> = ({ classes }) => {
   return (
     <svg
-      className={classess}
+      className={classes}
       // width="526"
       // height="642.0083"
       viewBox="0 0 5260 6420.083"
@@ -65,12 +67,10 @@ export const Me: FC<{
   )
 }
 
-export const Me2: FC<{
-  classess?: string
-}> = ({ classess }) => {
+const Me2: FC<PicProps> = ({ classes }) => {
   return (
     <svg
-      className={classess}
+      className={classes}
       // width="526"
       // height="642.0083"
       viewBox="0 0 5260 6420.083"
@@ -129,3 +129,5 @@ export const Me2: FC<{
     </svg>
   )
 }
+
+export { Me, Me2 }
