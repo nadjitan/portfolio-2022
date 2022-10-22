@@ -1,7 +1,10 @@
 import { FC } from "react"
 
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter"
-import nightOwl from "react-syntax-highlighter/dist/cjs/styles/hljs/night-owl"
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx"
+import nightOwl from "react-syntax-highlighter/dist/cjs/styles/prism/night-owl"
+
+SyntaxHighlighter.registerLanguage("tsx", tsx)
 
 const CodeBlock: FC<{ text: string }> = ({ text }) => {
   return (
