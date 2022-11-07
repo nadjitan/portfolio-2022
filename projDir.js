@@ -30,16 +30,11 @@ module.exports = {
 
       let tree = []
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i]
+      for (const file of files) {
         const res = resolve(dir, file.name)
 
         if (file.isDirectory()) {
-          tree.push({
-            name: i === 0 ? "PORTFOLIO-2022" : file.name,
-            type: "folder",
-            children: walk(res),
-          })
+          tree.push({ name: file.name, type: "folder", children: walk(res) })
           // Sort everything alphabetically
           tree.sort((fa, fb) => {
             if (fa.name < fb.name) return -1
@@ -87,7 +82,7 @@ module.exports = {
 
     return {
       type: "root",
-      name: basename(__dirname).toUpperCase(),
+      name: "PORTFOLIO-2022",
       children: tree,
     }
   },
