@@ -1,5 +1,5 @@
 const { readdirSync } = require("fs")
-const { parse, resolve } = require("path")
+const { parse, resolve, basename } = require("path")
 
 /**
  * @typedef {Object} Folder
@@ -16,8 +16,8 @@ const { parse, resolve } = require("path")
 module.exports = {
   get: dir => {
     if (dir.slice(-1) !== "/") dir += "/"
-
-    const mds = ["about", "projects", "tech", "themes"]
+    // Psuedo markdown files since I am not implementing MDX
+    const mds = ["about", "projects", "tech"]
 
     /**
      * Generate a tree structure for pages
@@ -35,7 +35,7 @@ module.exports = {
 
         if (file.isDirectory()) {
           tree.push({ name: file.name, type: "folder", children: walk(res) })
-          // Sort alphabetically
+          // Sort everything alphabetically
           tree.sort((fa, fb) => {
             if (fa.name < fb.name) return -1
             if (fa.name > fb.name) return 1
@@ -47,11 +47,24 @@ module.exports = {
             if (fb.type === "folder") return 1
             return 0
           })
+          // Sort folders alphabetically
+          tree.sort((fa, fb) => {
+            if (fa.type === "folder" && fb.type === "folder") {
+              if (fa.name < fb.name) return -1
+              if (fa.name > fb.name) return 1
+              return 0
+            }
+          })
         } else {
           const fileName = parse(file.name).name
+
           tree.push({
             name: fileName,
-            type: mds.includes(fileName) ? ".md" : parse(file.name).ext,
+            type:
+              // "tips" folder contains psuedo markdown files
+              mds.includes(fileName) || basename(dir) === "tips"
+                ? ".md"
+                : parse(file.name).ext,
           })
         }
       }
@@ -69,7 +82,7 @@ module.exports = {
 
     return {
       type: "root",
-      name: "PORTFOLIO 2022",
+      name: basename(__dirname).toUpperCase(),
       children: tree,
     }
   },

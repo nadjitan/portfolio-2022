@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useEffect, useState } from "react"
 
 const Dates = () => {
@@ -46,48 +47,58 @@ const Dates = () => {
   }
 
   return (
-    <div className="relative box-border flex max-h-max min-h-full w-full flex-col gap-3 overflow-hidden p-4">
-      <div className="cursor-pointer" onClick={copyDate}>
-        <h1>TEXT</h1>
-        <div className="flex items-center">
-          <code id="date-text" className="text-lg" />
+    <>
+      <Head>
+        <title>Tools - Dates</title>
+        <meta
+          name="description"
+          content="Convenient way to copy a string of current date."
+        />
+      </Head>
+
+      <div className="relative box-border flex max-h-max min-h-full w-full flex-col gap-3 overflow-hidden p-4">
+        <div className="cursor-pointer" onClick={copyDate}>
+          <h1>TEXT</h1>
+          <div className="flex items-center">
+            <code id="date-text" className="text-lg" />
+          </div>
+        </div>
+
+        <div className="cursor-pointer" onClick={copyDate}>
+          <h1 className="mt-4">UTC</h1>
+          <div className="flex items-center">
+            <code id="date-utc" className="text-lg" />
+          </div>
+        </div>
+
+        <div className="cursor-pointer" onClick={copyDate}>
+          <h1 className="mt-4">ISO</h1>
+          <div className="flex items-center">
+            <code id="date-iso" className="text-lg" />
+          </div>
+        </div>
+
+        <div className="cursor-pointer" onClick={copyDate}>
+          <h1 className="mt-4">LOCALE</h1>
+          <div className="grid items-center">
+            <code id="date-locale-date" className="text-lg" />
+          </div>
+        </div>
+
+        <div className="cursor-pointer" onClick={copyDate}>
+          <h1 className="mt-4">24h</h1>
+          <div className="grid items-center">
+            <code id="date-locale-24h" className="text-lg" />
+          </div>
+        </div>
+
+        <div
+          id="copy-alert"
+          className="absolute bottom-0 select-none self-center bg-theme-on-background px-4 py-2 font-bold text-theme-background opacity-0">
+          Copied!
         </div>
       </div>
-
-      <div className="cursor-pointer" onClick={copyDate}>
-        <h1 className="mt-4">UTC</h1>
-        <div className="flex items-center">
-          <code id="date-utc" className="text-lg" />
-        </div>
-      </div>
-
-      <div className="cursor-pointer" onClick={copyDate}>
-        <h1 className="mt-4">ISO</h1>
-        <div className="flex items-center">
-          <code id="date-iso" className="text-lg" />
-        </div>
-      </div>
-
-      <div className="cursor-pointer" onClick={copyDate}>
-        <h1 className="mt-4">LOCALE</h1>
-        <div className="grid items-center">
-          <code id="date-locale-date" className="text-lg" />
-        </div>
-      </div>
-
-      <div className="cursor-pointer" onClick={copyDate}>
-        <h1 className="mt-4">24h</h1>
-        <div className="grid items-center">
-          <code id="date-locale-24h" className="text-lg" />
-        </div>
-      </div>
-
-      <div
-        id="copy-alert"
-        className="absolute bottom-0 select-none self-center bg-theme-on-background px-4 py-2 font-bold text-theme-background opacity-0">
-        Copied!
-      </div>
-    </div>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import {
   GithubIcon,
   RotateIcon,
 } from "../../components/icons"
-import MainLayout from "../../components/layouts/main-layout"
+// import MainLayout from "../layout"
 
 const tetrominoes = {
   I: [
@@ -409,5 +409,5 @@ const Shapez = () => {
   )
 }
 
-Shapez.Layout = MainLayout
+// Shapez.Layout = MainLayout
 export default Shapez

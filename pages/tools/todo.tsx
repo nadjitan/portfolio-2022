@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useAutoAnimate } from "@formkit/auto-animate/react"
 import {
   Dispatch,
@@ -7,18 +8,15 @@ import {
   useRef,
   useState,
 } from "react"
+import uuid from "react-uuid"
 import lottie, { AnimationItem } from "lottie-web"
+
 import cb from "../../public/data/checkBox.json"
 import trash from "../../public/data/trashV2.json"
-import uuid from "react-uuid"
 import { SaveIcon } from "../../components/icons"
 
 const LottieCB: FC<{
-  action: {
-    id: string
-    name: string
-    done: boolean
-  }
+  action: { id: string; name: string; done: boolean }
   setTodo: Dispatch<
     SetStateAction<{
       title: string
@@ -45,9 +43,7 @@ const LottieCB: FC<{
     // in json { ..., "ip" === start, "op" === max, ...}
     if (action.done) anim.current!.goToAndPlay(30, true)
 
-    return () => {
-      anim.current!.destroy()
-    }
+    return () => anim.current!.destroy()
   }, [])
 
   return (
@@ -97,9 +93,7 @@ const LottieTrash: FC<{
       anim.play()
     }
 
-    return () => {
-      anim.destroy()
-    }
+    return () => anim.destroy()
   }, [])
 
   return (
@@ -135,76 +129,86 @@ const Todo = () => {
   }
 
   return (
-    <div className="grid h-full w-full justify-center overflow-hidden">
-      <div className="flex h-full w-max flex-col gap-6 pt-14">
-        <h1 className="place-self-center">{todo.title}</h1>
+    <>
+      <Head>
+        <title>Tools - Dates</title>
+        <meta
+          name="description"
+          content="Convenient way to copy a string of current date."
+        />
+      </Head>
 
-        <div
-          id="input-container"
-          className="flex w-full items-center border-b-2 border-b-theme-on-background focus-within:border-theme-on-background">
-          <input
-            id="input-todo"
-            type="text"
-            className="box-border w-full bg-transparent p-2 text-theme-on-background placeholder:text-theme-on-background focus:outline-none"
-            placeholder="name..."
-            onKeyUp={e => {
-              if (e.key === "Enter") {
-                const input = e.target as HTMLInputElement
+      <div className="grid h-full w-full justify-center overflow-hidden">
+        <div className="flex h-full w-max flex-col gap-6 pt-14">
+          <h1 className="place-self-center">{todo.title}</h1>
+
+          <div
+            id="input-container"
+            className="flex w-full items-center border-b-2 border-b-theme-on-background focus-within:border-theme-on-background">
+            <input
+              id="input-todo"
+              type="text"
+              className="box-border w-full bg-transparent p-2 text-theme-on-background placeholder:text-theme-on-background focus:outline-none"
+              placeholder="name..."
+              onKeyUp={e => {
+                if (e.key === "Enter") {
+                  const input = e.target as HTMLInputElement
+                  if (input.value !== "") addTodo(input.value)
+                  else
+                    document
+                      .getElementById("input-container")!
+                      .classList.toggle("head-shake")
+                }
+              }}
+            />
+
+            <SaveIcon
+              onClick={() => {
+                const input = document.getElementById(
+                  "input-todo"
+                ) as HTMLInputElement
                 if (input.value !== "") addTodo(input.value)
                 else
                   document
                     .getElementById("input-container")!
                     .classList.toggle("head-shake")
-              }
-            }}
-          />
+              }}
+              svgClass="h-7 w-7 cursor-pointer stroke-theme-on-background"
+            />
+          </div>
 
-          <SaveIcon
-            onClick={() => {
-              const input = document.getElementById(
-                "input-todo"
-              ) as HTMLInputElement
-              if (input.value !== "") addTodo(input.value)
-              else
-                document
-                  .getElementById("input-container")!
-                  .classList.toggle("head-shake")
-            }}
-            svgClass="h-7 w-7 cursor-pointer stroke-theme-on-background"
-          />
+          <ul
+            ref={parent}
+            className="flex h-2/3 w-64 flex-col gap-2 overflow-y-auto">
+            {todo.actions.map(a => (
+              <li
+                key={a.id}
+                className="flex w-full items-center gap-2 border-2 border-theme-on-background bg-theme-background py-2 px-2 hover:bg-theme-on-background [&_p]:hover:text-theme-background [&_path]:stroke-theme-on-background [&_path]:hover:stroke-theme-background">
+                <LottieCB action={a} setTodo={setTodo} />
+
+                <p
+                  className={`flex-1 truncate ${
+                    a.done ? `italic line-through decoration-2` : ""
+                  }`}>
+                  {a.name}
+                </p>
+
+                <LottieTrash
+                  onClick={() =>
+                    setTodo({
+                      ...todo,
+                      actions: todo.actions.filter(
+                        todo => todo.id !== a.id && todo
+                      ),
+                    })
+                  }
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <ul
-          ref={parent}
-          className="flex h-2/3 w-64 flex-col gap-2 overflow-y-auto">
-          {todo.actions.map(a => (
-            <li
-              key={a.id}
-              className="flex w-full items-center gap-2 border-2 border-theme-on-background bg-theme-background py-2 px-2 hover:bg-theme-on-background hover:text-theme-background [&_path]:stroke-theme-on-background [&_path]:hover:stroke-theme-background">
-              <LottieCB action={a} setTodo={setTodo} />
-
-              <p
-                className={`flex-1 truncate ${
-                  a.done ? `italic line-through decoration-2` : ""
-                }`}>
-                {a.name}
-              </p>
-
-              <LottieTrash
-                onClick={() =>
-                  setTodo({
-                    ...todo,
-                    actions: todo.actions.filter(
-                      todo => todo.id !== a.id && todo
-                    ),
-                  })
-                }
-              />
-            </li>
-          ))}
-        </ul>
       </div>
-    </div>
+    </>
   )
 }
 

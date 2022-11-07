@@ -1,5 +1,9 @@
 import type { NextPage } from "next"
-import Head from "next/head"
+import { FC, useState, useEffect } from "react"
+import Link from "next/link"
+import Router, { useRouter } from "next/router"
+import NextNProgress from "nextjs-progressbar"
+
 import {
   CogIcon,
   DownArrowIcon,
@@ -12,11 +16,7 @@ import {
   RightArrowIcon,
 } from "../icons"
 import ThemeSwitcher from "../theme-switcher"
-import { FC, useState, useEffect } from "react"
-import Link from "next/link"
-import Router, { useRouter } from "next/router"
 import { addOrRemove } from "../../utils"
-import NextNProgress from "nextjs-progressbar"
 import { useAppContext } from "../../hooks/useApp"
 
 type Tree = {
@@ -121,21 +121,19 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       }
 
       return (
-        <Link href={url}>
-          <a
-            aria-label={"Go to page " + files.name}
-            className={`btn-file font-cascadia-code ${
-              clicked === files.name.toLowerCase() && "active-btn"
-            }`}
-            onClick={() => {
-              setClicked(files.name.toLowerCase())
-              setMenu(false)
-            }}>
-            <FileIcon svgClass="fill-theme-on-background" />
-            &nbsp;
-            {files.name}
-            {files.type}
-          </a>
+        <Link
+          href={url}
+          className={`btn-file font-cascadia-code ${
+            clicked === files.name.toLowerCase() && "active-btn"
+          }`}
+          onClick={() => {
+            setClicked(files.name.toLowerCase())
+            setMenu(false)
+          }}>
+          <FileIcon svgClass="fill-theme-on-background" />
+          &nbsp;
+          {files.name}
+          {files.type}
         </Link>
       )
     }
@@ -195,10 +193,6 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
   return (
     <>
-      <Head>
-        <title>Home</title>
-      </Head>
-
       <main className="flex h-full w-full flex-col items-center sm:h-[680px] sm:w-[950px]">
         <nav className="flex w-full justify-between border-b-2 border-b-theme-on-background py-3 pl-3 pr-4">
           <div className="tooltip tooltip-right" data-tip="Hello 🎅">
@@ -246,8 +240,8 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
         <div className="relative grid h-full w-full grid-cols-1 grid-rows-1 overflow-hidden sm:grid-cols-[200px,1fr]">
           <div
             className={`${
-              menu ? "left-0" : "left-[-208px]"
-            } files-tree font-rubik absolute z-50 box-border flex h-full w-52 flex-col border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
+              menu ? "left-0" : "left-[-256px]"
+            } files-tree font-rubik absolute z-50 box-border flex h-full w-64 flex-col overflow-auto border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
 
             {/* {loading && (

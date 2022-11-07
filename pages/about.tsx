@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import { Suspense } from "react"
-import { IconProps } from "../components/icons"
 
-import MainLayout from "../components/layouts/main-layout"
+import { IconProps } from "../components/icons"
+// import MainLayout from "./layout"
 import { PicProps } from "../components/pic"
 import { useAppContext } from "../hooks/useApp"
 
@@ -117,5 +117,5 @@ const About = () => {
     </>
   )
 }
-About.Layout = MainLayout
+// About.Layout = MainLayout
 export default About

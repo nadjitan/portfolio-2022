@@ -3,7 +3,7 @@ import Head from "next/head"
 import { Suspense } from "react"
 import { IconProps } from "../components/icons"
 
-import MainLayout from "../components/layouts/main-layout"
+// import MainLayout from "./layout"
 
 const AstroIcon = dynamic<IconProps>(() =>
   import("../components/icons").then(mod => mod.AstroIcon)
@@ -219,6 +219,6 @@ const Tech = () => {
   )
 }
 
-Tech.Layout = MainLayout
+// Tech.Layout = MainLayout
 
 export default Tech

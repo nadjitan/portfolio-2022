@@ -1,5 +1,5 @@
 import Head from "next/head"
-import MainLayout from "../components/layouts/main-layout"
+// import MainLayout from "./layout"
 
 const Projects = () => {
   return (
@@ -71,6 +71,6 @@ const Projects = () => {
   )
 }
 
-Projects.Layout = MainLayout
+// Projects.Layout = MainLayout
 
 export default Projects

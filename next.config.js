@@ -1,4 +1,4 @@
-const projDir = require("./utils/projDir.js")
+const projDir = require("./projDir.js")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

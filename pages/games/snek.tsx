@@ -7,7 +7,7 @@ import {
   CaretUpIcon,
   GithubIcon,
 } from "../../components/icons"
-import MainLayout from "../../components/layouts/main-layout"
+// import MainLayout from "../layout"
 
 interface Vector2D {
   x: number
@@ -263,5 +263,5 @@ const Snek = () => {
   )
 }
 
-Snek.Layout = MainLayout
+// Snek.Layout = MainLayout
 export default Snek
