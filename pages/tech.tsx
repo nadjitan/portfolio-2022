@@ -184,7 +184,7 @@ const Tech = () => {
                 </a>
                 <a
                   aria-label={"Go to website of nuxtjs"}
-                  href="https://nuxtjs.org/"
+                  href="https://nuxt.com/"
                   target="_blank"
                   rel="noreferrer"
                   className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
