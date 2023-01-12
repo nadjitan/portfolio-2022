@@ -1,11 +1,10 @@
 import type { NextPage } from "next"
-import { FC, useState, useEffect } from "react"
+import { FC, useState } from "react"
 import Link from "next/link"
-import Router, { useRouter } from "next/router"
+import { useRouter } from "next/router"
 import NextNProgress from "nextjs-progressbar"
 
 import {
-  CogIcon,
   DownArrowIcon,
   ExitIcon,
   FileIcon,
@@ -47,31 +46,6 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
 
   const { theme } = useAppContext()
 
-  // Router events
-  // const [loadComplete, setLoadComplete] = useState(true)
-  // const [loading, setLoading] = useState(false)
-  // useEffect(() => {
-  //   Router.events.on("routeChangeStart", () => {
-  //     setLoadComplete(false)
-  //     setTimeout(() => !loadComplete && setLoading(true), 500)
-  //   })
-  //   Router.events.on("routeChangeComplete", () => {
-  //     setLoading(false)
-  //     setLoadComplete(true)
-  //   })
-  //   Router.events.on("routeChangeError", () => setLoading(false))
-  //   return () => {
-  //     Router.events.off("routeChangeStart", () => {
-  //       setLoadComplete(false)
-  //       setTimeout(() => !loadComplete && setLoading(true), 500)
-  //     })
-  //     Router.events.off("routeChangeComplete", () => {
-  //       setLoading(false)
-  //       setLoadComplete(true)
-  //     })
-  //     Router.events.off("routeChangeError", () => setLoading(false))
-  //   }
-  // }, [Router.events])
   const router = useRouter()
 
   // "File system" events
@@ -90,21 +64,21 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
   const RecursiveComponent: FC<{ files: Tree }> = ({ files }) => {
     let parentObjs: Tree[] = []
     let found = false
-    function searchParentsObj(tree: Tree, toFind: string) {
+    function getFilePath(tree: Tree, toFind: string) {
       if (found) return
       if (tree.children) {
         tree.children.forEach(f => {
           if (f.name.toLowerCase() === toFind) {
             found = true
             return
-          } else searchParentsObj(f as Tree, toFind)
+          } else getFilePath(f as Tree, toFind)
         })
         if (found) parentObjs.push(tree)
       }
     }
 
     const LinkElem: FC = () => {
-      searchParentsObj(tree, files.name.toLowerCase())
+      getFilePath(tree, files.name.toLowerCase())
       parentObjs = parentObjs.reverse()
 
       let url = `/${files.name.toLowerCase()}`
@@ -131,9 +105,7 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             setMenu(false)
           }}>
           <FileIcon svgClass="fill-theme-on-background" />
-          &nbsp;
-          {files.name}
-          {files.type}
+          &nbsp;{files.name + files.type}
         </Link>
       )
     }
@@ -184,11 +156,8 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
       )
     }
 
-    if (files.type === "folder" || files.type === "root") {
-      return <DetailsElem />
-    } else {
-      return <LinkElem />
-    }
+    if (files.type === "folder" || files.type === "root") return <DetailsElem />
+    else return <LinkElem />
   }
 
   return (
@@ -244,18 +213,6 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             } files-tree font-rubik absolute z-50 box-border flex h-full w-64 flex-col overflow-auto border-r-2 border-theme-on-background bg-theme-background pt-2 text-base transition-[left] sm:hidden`}>
             <RecursiveComponent files={tree} />
 
-            {/* {loading && (
-              <div className="absolute bottom-14 z-0 flex scale-75 items-center justify-center place-self-center bg-theme-background transition-opacity">
-                <CogIcon
-                  svgClass="fill-theme-on-background scale-[2] h-6 w-6"
-                  spanClass="mr-5 animate-spin"
-                />
-                <h3 className="inline-flex justify-center font-bold">
-                  Loading...
-                </h3>
-              </div>
-            )} */}
-
             <button
               onClick={() => setMenu(false)}
               className="mt-auto flex w-full items-center justify-center rounded-none">
@@ -281,18 +238,6 @@ const MainLayout: NextPage<{ children: JSX.Element }> = ({ children }) => {
             />
 
             {children}
-
-            {/* {loading && (
-              <div className="absolute right-8 bottom-6 z-50 hidden scale-100 items-center justify-center bg-theme-background transition-opacity sm:flex">
-                <CogIcon
-                  svgClass="fill-theme-on-background scale-[2] h-6 w-6"
-                  spanClass="mr-5 animate-spin"
-                />
-                <h3 className="inline-flex justify-center font-bold">
-                  Loading...
-                </h3>
-              </div>
-            )} */}
           </div>
         </div>
       </main>

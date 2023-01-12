@@ -2,7 +2,7 @@ import { FC, useEffect, useRef } from "react"
 import { MoonIcon, SunIcon } from "./icons"
 import { useAppContext } from "../hooks/useApp"
 
-interface IconProps {
+type IconProps = {
   title?: string
   spanClass?: string
   svgClass?: string

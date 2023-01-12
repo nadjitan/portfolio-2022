@@ -1,6 +1,4 @@
 import "../styles/global.css"
-import "../styles/animista.css"
-import "../styles/Files.css"
 import "../styles/Shapez.css"
 import "../styles/Snek.css"
 

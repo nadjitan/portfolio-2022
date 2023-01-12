@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-export interface PicProps {
+export type PicProps = {
   classes?: string
 }
 

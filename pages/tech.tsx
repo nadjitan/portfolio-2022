@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import { Suspense } from "react"
-import { IconProps } from "../components/icons"
+import type { IconProps } from "../components/icons"
 
 // import MainLayout from "./layout"
 
@@ -93,7 +93,7 @@ const Tech = () => {
                   href="https://developer.mozilla.org/en-US/docs/Web/HTML"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#E34F26]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#E34F26]">
                   <HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>HTML</code>
                 </a>
@@ -102,7 +102,7 @@ const Tech = () => {
                   href="https://developer.mozilla.org/en-US/docs/Web/CSS"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#1572B6]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#1572B6]">
                   <CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>CSS</code>
                 </a>
@@ -111,7 +111,7 @@ const Tech = () => {
                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#F7DF1E]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#F7DF1E]">
                   <JSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">JavaScript</code>
                 </a>
@@ -120,7 +120,7 @@ const Tech = () => {
                   href="https://www.typescriptlang.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#3178C6]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#3178C6]">
                   <TSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">TypeScript</code>
                 </a>
@@ -135,7 +135,7 @@ const Tech = () => {
                   href="https://tailwindcss.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#06B6D4]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#06B6D4]">
                   <TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-sm">tailwind</code>
                 </a>
@@ -150,7 +150,7 @@ const Tech = () => {
                   href="https://reactjs.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#61DAFB]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#61DAFB]">
                   <ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>ReactJS</code>
                 </a>
@@ -159,7 +159,7 @@ const Tech = () => {
                   href="https://www.solidjs.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                  className="tech-icon">
                   <SolidIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>SolidJS</code>
                 </a>
@@ -168,7 +168,7 @@ const Tech = () => {
                   href="https://vuejs.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                  className="tech-icon">
                   <VueIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>VueJS</code>
                 </a>
@@ -178,7 +178,7 @@ const Tech = () => {
                   href="https://nextjs.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                  className="tech-icon">
                   <NextJSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NextJS</code>
                 </a>
@@ -187,7 +187,7 @@ const Tech = () => {
                   href="https://nuxt.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
+                  className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
                   <NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NuxtJS</code>
                 </a>
@@ -196,7 +196,7 @@ const Tech = () => {
                   href="https://astro.build/"
                   target="_blank"
                   rel="noreferrer"
-                  className="grid h-24 w-24 cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+                  className="tech-icon">
                   <AstroIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>astro</code>
                 </a>

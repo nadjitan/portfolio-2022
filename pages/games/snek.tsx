@@ -9,12 +9,12 @@ import {
 } from "../../components/icons"
 // import MainLayout from "../layout"
 
-interface Vector2D {
+type Vector2D = {
   x: number
   y: number
 }
 
-interface Snek {
+type Snek = {
   body: Vector2D[]
   move: "up" | "right" | "down" | "left"
 }

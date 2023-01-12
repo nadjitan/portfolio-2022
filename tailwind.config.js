@@ -39,10 +39,8 @@ module.exports = {
         "theme-shadow": "var(--shadow)",
       },
       fontFamily: {
-        "space-mono-regular": ["Space Mono Regular", "sans-serif"],
         "space-mono-bold": ["Space Mono Bold", "sans-serif"],
         "cascadia-code": ["Cascadia Code", "sans-serif"],
-        "roboto-condensed": ["Roboto Condensed", "sans-serif"],
         workSans: ["WorkSans", "sans-serif"],
       },
       screens: {

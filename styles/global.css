@@ -8,18 +8,8 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Space Mono Regular";
-  src: url(../public/fonts/h2/SpaceMono-Regular.ttf) format("truetype");
-  font-display: swap;
-}
-@font-face {
   font-family: "Cascadia Code";
   src: url(../public/fonts/code/CascadiaCode.ttf) format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Roboto Condensed";
-  src: url(../public/fonts/h1/RobotoCondensed.ttf) format("truetype");
   font-display: swap;
 }
 @font-face {
@@ -139,28 +129,89 @@
   ul {
     @apply list-inside list-disc text-theme-on-background;
   }
-  .p-link {
-    @apply font-space-mono-bold decoration-2 underline-offset-4 hover:italic hover:underline;
-  }
 
   button {
     @apply h-max w-max cursor-pointer rounded-full
-    border-2
-    border-theme-on-background
+    border-2 border-theme-on-background
     bg-theme-on-background
-    px-5
-    py-2
-    font-cascadia-code
-    text-base
-    font-bold
-    text-theme-background
-    active:bg-theme-background
-    active:text-theme-on-background;
+    px-5 py-2
+    font-cascadia-code text-base font-bold text-theme-background
+    active:bg-theme-background active:text-theme-on-background;
   }
   kbd {
     @apply text-white;
   }
+}
 
+@layer components {
+  .p-link {
+    @apply font-space-mono-bold decoration-2 underline-offset-4 hover:italic hover:underline;
+  }
+
+  .tech-icon {
+    @apply grid 
+    h-24 w-24 
+    cursor-pointer 
+    place-items-center
+    gap-1 
+    border-2 border-dashed border-transparent 
+    px-3 py-2 
+    hover:border-theme-on-background;
+  }
+
+  .icon-right-arrow,
+  .icon-down-arrow {
+    @apply mr-1 h-5 w-5;
+  }
+
+  /**
+ * ----------------------------------------
+ *             FILES HIERARCHY
+ * ----------------------------------------
+ */
+  .container-folder {
+    @apply relative;
+  }
+  .btn-folder,
+  .btn-file {
+    @apply relative box-border flex w-max cursor-pointer
+    select-none list-none
+    items-center
+    border-2 border-transparent
+    py-1 px-2;
+  }
+  .btn-folder::-webkit-details-marker {
+    @apply hidden;
+  }
+  .files-tree details > details {
+    @apply ml-2;
+  }
+  .btn-file {
+    @apply ml-8 bg-transparent;
+  }
+  .active-btn {
+    @apply border-2 bg-theme-on-background text-theme-background;
+  }
+  .active-btn svg {
+    @apply fill-theme-background;
+  }
+  .btn-file:hover,
+  .btn-folder:hover {
+    @apply border-2 border-dashed border-theme-on-background;
+  }
+
+  .project-item {
+    @apply grid h-24
+    min-w-[6rem] max-w-[10rem] cursor-pointer
+    place-items-center
+    gap-1
+    border-2 border-dashed border-transparent
+    px-3 py-2
+    hover:border-theme-on-background;
+  }
+}
+
+@layer utilities {
   .head-shake {
     animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0, 0.23, 1, 0.71);

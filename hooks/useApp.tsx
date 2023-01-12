@@ -8,7 +8,7 @@ import {
   useState,
 } from "react"
 
-interface IAppContext {
+type IAppContext = {
   animation: "idle" | "animating" | "animate"
   theme: "light" | "dark"
   setAnimState: Dispatch<SetStateAction<IAppContext["animation"]>>

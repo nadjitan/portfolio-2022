@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-export interface IconProps {
+export type IconProps = {
   title?: string
   spanClass?: string
   svgClass?: string
@@ -445,3 +445,7 @@ export {
   TSIcon,
   JSIcon,
 }
+
+const Icons = { AstroIcon }
+
+export default Icons

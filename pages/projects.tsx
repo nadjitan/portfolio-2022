@@ -17,7 +17,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/interactive-infographic"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             infographic
           </a>
 
@@ -26,7 +26,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/hybrid-prog-project"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             POS
           </a>
 
@@ -35,7 +35,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/KpOnlineStore"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             KpOnlineStore
           </a>
 
@@ -44,7 +44,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/jquery-css"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             jquery-css
           </a>
 
@@ -53,7 +53,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/jquery-pos"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             jquery-pos
           </a>
 
@@ -62,7 +62,7 @@ const Projects = () => {
             href="https://github.com/nadjitan/CrudMobile"
             target="_blank"
             rel="noreferrer"
-            className="grid h-24 min-w-[6rem] max-w-[10rem] cursor-pointer place-items-center gap-1 border-2 border-dashed border-transparent px-3 py-2 hover:border-theme-on-background">
+            className="project-item">
             CrudMobile
           </a>
         </div>
