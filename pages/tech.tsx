@@ -1,43 +1,32 @@
 import dynamic from "next/dynamic"
 import Head from "next/head"
-import { Suspense } from "react"
+import { ComponentType, Suspense } from "react"
 import type { IconProps } from "../components/icons"
 
 // import MainLayout from "./layout"
 
-const AstroIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.AstroIcon)
-)
-const CSSIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.CSSIcon)
-)
-const HTMLIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.HTMLIcon)
-)
-const JSIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.JSIcon)
-)
-const NextJSIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.NextJSIcon)
-)
-const NuxtIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.NuxtIcon)
-)
-const ReactIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.ReactIcon)
-)
-const SolidIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.SolidIcon)
-)
-const TailwindIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.TailwindIcon)
-)
-const TSIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.TSIcon)
-)
-const VueIcon = dynamic<IconProps>(() =>
-  import("../components/icons").then(mod => mod.VueIcon)
-)
+type ImportedIcons = {
+  [key in typeof iconNames[number]]: ComponentType<IconProps>
+}
+const iconNames = [
+  "AstroIcon",
+  "CSSIcon",
+  "HTMLIcon",
+  "JSIcon",
+  "NextJSIcon",
+  "NuxtIcon",
+  "ReactIcon",
+  "SolidIcon",
+  "TailwindIcon",
+  "TSIcon",
+  "VueIcon",
+] as const
+const icons: ImportedIcons = iconNames.reduce((result, icon) => {
+  result[icon] = dynamic<IconProps>(() =>
+    import("../components/icons").then(mod => mod[icon])
+  )
+  return result
+}, {} as ImportedIcons)
 
 const Tech = () => {
   return (
@@ -94,7 +83,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#E34F26]">
-                  <HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>HTML</code>
                 </a>
                 <a
@@ -103,7 +92,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#1572B6]">
-                  <CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>CSS</code>
                 </a>
                 <a
@@ -112,7 +101,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#F7DF1E]">
-                  <JSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.JSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">JavaScript</code>
                 </a>
                 <a
@@ -121,7 +110,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#3178C6]">
-                  <TSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.TSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">TypeScript</code>
                 </a>
               </div>
@@ -136,7 +125,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#06B6D4]">
-                  <TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-sm">tailwind</code>
                 </a>
               </div>
@@ -151,7 +140,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#61DAFB]">
-                  <ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>ReactJS</code>
                 </a>
                 <a
@@ -160,7 +149,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <SolidIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.SolidIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>SolidJS</code>
                 </a>
                 <a
@@ -169,7 +158,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <VueIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.VueIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>VueJS</code>
                 </a>
 
@@ -179,7 +168,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <NextJSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.NextJSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NextJS</code>
                 </a>
                 <a
@@ -188,7 +177,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
-                  <NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NuxtJS</code>
                 </a>
                 <a
@@ -197,7 +186,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <AstroIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <icons.AstroIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>astro</code>
                 </a>
               </div>

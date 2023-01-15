@@ -445,7 +445,3 @@ export {
   TSIcon,
   JSIcon,
 }
-
-const Icons = { AstroIcon }
-
-export default Icons
