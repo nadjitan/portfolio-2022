@@ -3,12 +3,10 @@ import Head from "next/head"
 import { ComponentType, Suspense } from "react"
 import type { IconProps } from "../components/icons"
 
-// import MainLayout from "./layout"
-
-type ImportedIcons = {
-  [key in typeof iconNames[number]]: ComponentType<IconProps>
+type ImportedLogos = {
+  [key in typeof logoNames[number]]: ComponentType<IconProps>
 }
-const iconNames = [
+const logoNames = [
   "AstroIcon",
   "CSSIcon",
   "HTMLIcon",
@@ -21,12 +19,12 @@ const iconNames = [
   "TSIcon",
   "VueIcon",
 ] as const
-const icons: ImportedIcons = iconNames.reduce((result, icon) => {
+const Logos = logoNames.reduce((result, icon) => {
   result[icon] = dynamic<IconProps>(() =>
     import("../components/icons").then(mod => mod[icon])
   )
   return result
-}, {} as ImportedIcons)
+}, {} as ImportedLogos)
 
 const Tech = () => {
   return (
@@ -83,7 +81,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#E34F26]">
-                  <icons.HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.HTMLIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>HTML</code>
                 </a>
                 <a
@@ -92,7 +90,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#1572B6]">
-                  <icons.CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.CSSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>CSS</code>
                 </a>
                 <a
@@ -101,7 +99,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#F7DF1E]">
-                  <icons.JSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.JSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">JavaScript</code>
                 </a>
                 <a
@@ -110,7 +108,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#3178C6]">
-                  <icons.TSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.TSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-[0.75rem]">TypeScript</code>
                 </a>
               </div>
@@ -125,7 +123,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#06B6D4]">
-                  <icons.TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.TailwindIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code className="text-sm">tailwind</code>
                 </a>
               </div>
@@ -140,7 +138,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#61DAFB]">
-                  <icons.ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.ReactIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>ReactJS</code>
                 </a>
                 <a
@@ -149,7 +147,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <icons.SolidIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.SolidIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>SolidJS</code>
                 </a>
                 <a
@@ -158,7 +156,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <icons.VueIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.VueIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>VueJS</code>
                 </a>
 
@@ -168,7 +166,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <icons.NextJSIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.NextJSIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NextJS</code>
                 </a>
                 <a
@@ -177,7 +175,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon [&>*:nth-child(1)>*:nth-child(1)]:hover:fill-[#00DC82]">
-                  <icons.NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.NuxtIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>NuxtJS</code>
                 </a>
                 <a
@@ -186,7 +184,7 @@ const Tech = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="tech-icon">
-                  <icons.AstroIcon svgClass="fill-theme-on-background w-12 h-12" />
+                  <Logos.AstroIcon svgClass="fill-theme-on-background w-12 h-12" />
                   <code>astro</code>
                 </a>
               </div>
