@@ -1,5 +1,4 @@
 import Head from "next/head"
-// import MainLayout from "./layout"
 
 const Projects = () => {
   return (
@@ -14,7 +13,7 @@ const Projects = () => {
         <div className="mt-6 flex max-h-full min-h-max w-full flex-wrap gap-4">
           <a
             aria-label={"Go to github of ticketing-system design doc"}
-            href="https://drive.google.com/file/d/1lgB06KkT9OuxYN9lhKkkJ_YPF038Zkkd/view?usp=sharing"
+            href="https://drive.google.com/file/d/1I8HcJU616NnBkvFy-qAFNFKYfc15sn6K/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
             className="project-item">
