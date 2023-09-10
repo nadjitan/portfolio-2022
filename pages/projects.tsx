@@ -12,6 +12,15 @@ const Projects = () => {
         <h1>projects</h1>
         <div className="mt-6 flex max-h-full min-h-max w-full flex-wrap gap-4">
           <a
+            aria-label={"Go to fitness app"}
+            href="https://gym-nadjitan.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-item">
+            fitness
+          </a>
+
+          <a
             aria-label={"Go to github of ticketing-system design doc"}
             href="https://drive.google.com/file/d/1I8HcJU616NnBkvFy-qAFNFKYfc15sn6K/view?usp=sharing"
             target="_blank"
