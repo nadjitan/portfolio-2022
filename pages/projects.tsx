@@ -13,7 +13,7 @@ const Projects = () => {
         <div className="mt-6 flex max-h-full min-h-max w-full flex-wrap gap-4">
           <a
             aria-label={"Go to fitness app"}
-            href="https://gym-nadjitan.vercel.app/"
+            href="https://fitness-nadjitan.vercel.app"
             target="_blank"
             rel="noreferrer"
             className="project-item">
