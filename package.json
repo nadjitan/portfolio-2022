@@ -13,7 +13,7 @@
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "daisyui": "^2.27.0",
     "lottie-web": "^5.9.6",
-    "next": "^13.0.0",
+    "next": "^16.2.6",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
